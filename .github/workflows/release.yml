@@ -117,22 +117,34 @@ jobs:
         
         # 检查文件信息
         echo "=== Build Information ==="
-        ls -lh Kotoamatsukami.so
-        file Kotoamatsukami.so
+        
+        # 检查生成的文件名
+        if [ -f "libKotoamatsukami.so" ]; then
+          SO_FILE="libKotoamatsukami.so"
+        elif [ -f "Kotoamatsukami.so" ]; then
+          SO_FILE="Kotoamatsukami.so"
+        else
+          echo "❌ 未找到生成的SO文件"
+          ls -lh *.so
+          exit 1
+        fi
+        
+        ls -lh $SO_FILE
+        file $SO_FILE
         
         # 验证架构
         if [ "${{ matrix.arch }}" = "x86_64" ]; then
-          file Kotoamatsukami.so | grep -q "x86-64" || (echo "❌ Wrong architecture" && exit 1)
+          file $SO_FILE | grep -q "x86-64" || (echo "❌ Wrong architecture" && exit 1)
         else
-          file Kotoamatsukami.so | grep -q "aarch64" || (echo "❌ Wrong architecture" && exit 1)
+          file $SO_FILE | grep -q "aarch64" || (echo "❌ Wrong architecture" && exit 1)
         fi
         
         # 显示符号信息
         echo "=== Symbol Information ==="
-        nm -D Kotoamatsukami.so | grep -E "(llvmGetPassPluginInfo|_Z)" | head -5
+        nm -D $SO_FILE | grep -E "(llvmGetPassPluginInfo|_Z)" | head -5
         
         # 创建最终发布文件
-        cp Kotoamatsukami.so Kotoamatsukami-${{ matrix.arch }}-${{ steps.version.outputs.VERSION }}.so
+        cp $SO_FILE Kotoamatsukami-${{ matrix.arch }}-${{ steps.version.outputs.VERSION }}.so
         
     - name: Functional Test (x86_64 only)
       if: matrix.arch == 'x86_64'
@@ -178,12 +190,12 @@ jobs:
         wc -l android_jni_test.ll
         
         # 应用轻度混淆
-        opt-17 --load-pass-plugin=./Kotoamatsukami.so \
+        opt-17 --load-pass-plugin=./$SO_FILE \
           --passes="gv-encrypt,bogus-control-flow" \
           -S android_jni_test.ll -o android_jni_light.ll
           
         # 应用强度混淆
-        opt-17 --load-pass-plugin=./Kotoamatsukami.so \
+        opt-17 --load-pass-plugin=./$SO_FILE \
           --passes="gv-encrypt,bogus-control-flow,flatten,split-basic-block" \
           -S android_jni_test.ll -o android_jni_heavy.ll || true
         
@@ -212,7 +224,7 @@ jobs:
         ls -lh build-${{ matrix.arch }}/*.so
         
     - name: Upload release artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: kotoamatsukami-${{ matrix.arch }}-release
         path: |
@@ -226,7 +238,7 @@ jobs:
     
     steps:
     - name: Download all artifacts
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       
     - name: Prepare release files
       run: |

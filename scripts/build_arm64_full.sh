@@ -49,12 +49,23 @@ if [ $? -eq 0 ]; then
         echo -e "${GREEN}✓ ARM64版本编译成功！${NC}"
         
         echo "文件信息:"
-        ls -lh Kotoamatsukami.so
-        file Kotoamatsukami.so
+        # 检查生成的文件名（可能是 libKotoamatsukami.so 或 Kotoamatsukami.so）
+        if [ -f "libKotoamatsukami.so" ]; then
+            SO_FILE="libKotoamatsukami.so"
+        elif [ -f "Kotoamatsukami.so" ]; then
+            SO_FILE="Kotoamatsukami.so"
+        else
+            echo -e "${RED}未找到生成的SO文件${NC}"
+            ls -lh *.so 2>/dev/null || echo "没有找到任何.so文件"
+            exit 1
+        fi
+        
+        ls -lh $SO_FILE
+        file $SO_FILE
         
         mkdir -p ../bin/arm64
-        cp Kotoamatsukami.so ../bin/arm64/
-        echo -e "${GREEN}已复制到 bin/arm64/Kotoamatsukami.so${NC}"
+        cp $SO_FILE ../bin/arm64/Kotoamatsukami.so
+        echo -e "${GREEN}已复制 $SO_FILE 到 bin/arm64/Kotoamatsukami.so${NC}"
     else
         echo -e "${RED}编译失败${NC}"
     fi

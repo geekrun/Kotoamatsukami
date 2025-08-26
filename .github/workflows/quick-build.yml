@@ -136,14 +136,26 @@ jobs:
     - name: Verify build
       run: |
         cd build-${{ matrix.arch }}
-        ls -lh Kotoamatsukami.so
-        file Kotoamatsukami.so
+        
+        # 检查生成的文件名
+        if [ -f "libKotoamatsukami.so" ]; then
+          SO_FILE="libKotoamatsukami.so"
+        elif [ -f "Kotoamatsukami.so" ]; then
+          SO_FILE="Kotoamatsukami.so"
+        else
+          echo "❌ 未找到生成的SO文件"
+          ls -lh *.so
+          exit 1
+        fi
+        
+        ls -lh $SO_FILE
+        file $SO_FILE
         
         # 检查是否是正确的架构
         if [ "${{ matrix.arch }}" = "x86_64" ]; then
-          file Kotoamatsukami.so | grep -q "x86-64" || (echo "❌ Wrong architecture" && exit 1)
+          file $SO_FILE | grep -q "x86-64" || (echo "❌ Wrong architecture" && exit 1)
         else
-          file Kotoamatsukami.so | grep -q "aarch64" || (echo "❌ Wrong architecture" && exit 1)
+          file $SO_FILE | grep -q "aarch64" || (echo "❌ Wrong architecture" && exit 1)
         fi
         
         echo "✅ ${{ matrix.arch }} build completed successfully"
@@ -152,8 +164,8 @@ jobs:
       run: ccache --show-stats
       
     - name: Upload build artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: kotoamatsukami-${{ matrix.arch }}-${{ github.sha }}
-        path: build-${{ matrix.arch }}/Kotoamatsukami.so
+        path: build-${{ matrix.arch }}/*.so
         retention-days: 7  # 短期保存以节省空间
