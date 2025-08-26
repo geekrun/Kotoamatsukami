@@ -50,8 +50,8 @@ jobs:
           -DCMAKE_BUILD_TYPE=Release \
           -DLLVM_DIR=/usr/lib/llvm-17/lib/cmake/llvm
           
-        # 只编译一个源文件来测试配置
-        ninja src/PassPlugin.cpp.o
+        # 只编译插件来测试配置
+        ninja Kotoamatsukami
         
         echo "✅ Quick build configuration test passed"
 
