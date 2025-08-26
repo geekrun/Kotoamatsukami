@@ -166,6 +166,11 @@ jobs:
         ls -lh $SO_FILE
         file $SO_FILE
         
+        # 复制配置文件到构建目录
+        cp ../compiler/Kotoamatsukami.config ./
+        echo "=== Configuration file copied ==="
+        ls -lh Kotoamatsukami.config
+        
         # 创建测试用例（模拟需要保护的敏感代码）
         cat > test_obfuscation.c << 'EOF'
         #include <stdio.h>

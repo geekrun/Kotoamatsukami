@@ -158,6 +158,9 @@ jobs:
         # Generate LLVM IR
         clang-17 -S -emit-llvm test.c -o test.ll
         
+        # Copy configuration file
+        cp ../compiler/Kotoamatsukami.config ./
+        
         # Test plugin loading (should not crash)
         timeout 30s opt-17 --load-pass-plugin=./$SO_FILE \
           --passes=gv-encrypt -S test.ll -o test_out.ll || true
