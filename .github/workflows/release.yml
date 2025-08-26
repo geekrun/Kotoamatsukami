@@ -151,6 +151,21 @@ jobs:
       run: |
         cd build-${{ matrix.arch }}
         
+        # 检测生成的文件名
+        if [ -f "libKotoamatsukami.so" ]; then
+          SO_FILE="libKotoamatsukami.so"
+        elif [ -f "Kotoamatsukami.so" ]; then
+          SO_FILE="Kotoamatsukami.so"
+        else
+          echo "❌ 未找到生成的SO文件进行功能测试"
+          ls -lh *.so
+          exit 1
+        fi
+        
+        echo "=== Using SO file: $SO_FILE ==="
+        ls -lh $SO_FILE
+        file $SO_FILE
+        
         # 创建测试用例（模拟需要保护的敏感代码）
         cat > test_obfuscation.c << 'EOF'
         #include <stdio.h>
