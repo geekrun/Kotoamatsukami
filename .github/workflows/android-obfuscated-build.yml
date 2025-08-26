@@ -167,6 +167,17 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x android_example/gradlew
     
+    - name: Debug CI File Structure
+      run: |
+        echo "🔍 Checking CI file structure..."
+        pwd
+        ls -la
+        echo "🔍 Checking plugin file..."
+        ls -la bin/Kotoamatsukami.so || echo "❌ Plugin not found at bin/Kotoamatsukami.so"
+        ls -la compiler/Kotoamatsukami.config || echo "❌ Config not found at compiler/Kotoamatsukami.config"
+        echo "🔍 Full directory tree from root:"
+        find . -name "Kotoamatsukami.so" -o -name "Kotoamatsukami.config"
+    
     - name: Update CMakeLists.txt for CI Environment
       run: |
         cd android_example/app/src/main/cpp
@@ -187,13 +198,46 @@ jobs:
         if(ENABLE_OBFUSCATION)
             message(STATUS "CI Two-stage obfuscation compilation enabled")
             
-            # CI环境中的插件和配置路径
-            set(KOTOAMATSUKAMI_PLUGIN "\${CMAKE_CURRENT_SOURCE_DIR}/../../../../../bin/Kotoamatsukami.so")
-            set(OBFUSCATION_CONFIG "\${CMAKE_CURRENT_SOURCE_DIR}/../../../../../compiler/Kotoamatsukami.config")
+            # CI环境中的插件和配置路径 - 尝试多个可能的位置
+            set(PLUGIN_SEARCH_PATHS
+                "\${CMAKE_CURRENT_SOURCE_DIR}/../../../../../bin/Kotoamatsukami.so"
+                "/home/runner/work/Kotoamatsukami/Kotoamatsukami/bin/Kotoamatsukami.so"
+                "\${CMAKE_SOURCE_DIR}/bin/Kotoamatsukami.so"
+            )
+            
+            set(CONFIG_SEARCH_PATHS
+                "\${CMAKE_CURRENT_SOURCE_DIR}/../../../../../compiler/Kotoamatsukami.config"
+                "/home/runner/work/Kotoamatsukami/Kotoamatsukami/compiler/Kotoamatsukami.config"
+                "\${CMAKE_SOURCE_DIR}/compiler/Kotoamatsukami.config"
+            )
+            
+            # 查找插件文件
+            set(KOTOAMATSUKAMI_PLUGIN "")
+            foreach(PLUGIN_PATH \${PLUGIN_SEARCH_PATHS})
+                if(EXISTS "\${PLUGIN_PATH}")
+                    set(KOTOAMATSUKAMI_PLUGIN "\${PLUGIN_PATH}")
+                    message(STATUS "Found plugin at: \${PLUGIN_PATH}")
+                    break()
+                endif()
+            endforeach()
+            
+            # 查找配置文件  
+            set(OBFUSCATION_CONFIG "")
+            foreach(CONFIG_PATH \${CONFIG_SEARCH_PATHS})
+                if(EXISTS "\${CONFIG_PATH}")
+                    set(OBFUSCATION_CONFIG "\${CONFIG_PATH}")
+                    message(STATUS "Found config at: \${CONFIG_PATH}")
+                    break()
+                endif()
+            endforeach()
             
             # 验证文件存在
-            if(NOT EXISTS "\${KOTOAMATSUKAMI_PLUGIN}")
-                message(FATAL_ERROR "Plugin not found: \${KOTOAMATSUKAMI_PLUGIN}")
+            if("\${KOTOAMATSUKAMI_PLUGIN}" STREQUAL "")
+                message(FATAL_ERROR "Plugin not found in any of the search paths")
+            endif()
+            
+            if("\${OBFUSCATION_CONFIG}" STREQUAL "")
+                message(FATAL_ERROR "Config file not found in any of the search paths")
             endif()
             
             if(NOT EXISTS "\${OBFUSCATION_CONFIG}")
