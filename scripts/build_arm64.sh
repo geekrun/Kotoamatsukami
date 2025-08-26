@@ -40,6 +40,7 @@ echo -e "${GREEN}✓ ARM64目标支持检查通过${NC}"
 
 # 创建ARM64构建目录
 echo -e "${YELLOW}准备构建目录...${NC}"
+cd ..  # 回到项目根目录
 rm -rf build-arm64
 mkdir -p build-arm64
 cd build-arm64

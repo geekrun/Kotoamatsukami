@@ -8,8 +8,9 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-# 项目根目录
-PROJECT_ROOT="/mnt/d/code_project/geekrun/external_fork/Kotoamatsukami"
+# 动态检测项目根目录
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+PROJECT_ROOT="$( cd "$SCRIPT_DIR/.." &> /dev/null && pwd )"
 BUILD_DIR="$PROJECT_ROOT/build-arm64-full"
 
 cd "$PROJECT_ROOT" || exit 1

@@ -13,6 +13,7 @@ apt update
 apt install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu libc6-dev-arm64-cross
 
 echo -e "${YELLOW}创建ARM64构建目录...${NC}"
+cd ..  # 回到项目根目录
 rm -rf build-arm64-full
 mkdir build-arm64-full
 cd build-arm64-full

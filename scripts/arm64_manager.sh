@@ -4,23 +4,25 @@ echo "🚀 Kotoamatsukami ARM64 管理器"
 echo "用于Android SO混淆的ARM64版本管理"
 echo "=================================="
 
-PROJECT_ROOT="/mnt/d/code_project/geekrun/external_fork/Kotoamatsukami"
+# 动态检测项目根目录
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+PROJECT_ROOT="$( cd "$SCRIPT_DIR/.." &> /dev/null && pwd )"
 
 case "${1:-help}" in
     "check"|"1")
         echo "📋 检查ARM64编译状态..."
-        bash "$PROJECT_ROOT/check_arm64_build.sh"
+        bash "$SCRIPT_DIR/check_arm64_build.sh"
         ;;
     
     "test"|"2") 
         echo "🧪 测试ARM64混淆功能..."
-        bash "$PROJECT_ROOT/quick_test_arm64.sh"
+        bash "$SCRIPT_DIR/quick_test_arm64.sh"
         ;;
     
     "build"|"3")
         echo "🔨 重新编译ARM64版本..."
         cd "$PROJECT_ROOT"
-        bash ./build_arm64_full.sh
+        bash ./scripts/build_arm64_full.sh
         ;;
     
     "status"|"4")

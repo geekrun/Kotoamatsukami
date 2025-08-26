@@ -2,6 +2,11 @@
 
 echo "=== 手动创建强力混淆ARM64库 ==="
 
+# 动态检测项目根目录
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+PROJECT_ROOT="$( cd "$SCRIPT_DIR/.." &> /dev/null && pwd )"
+cd "$PROJECT_ROOT"
+
 # 步骤1: 创建复杂测试代码
 cat > large_arm64_test.c << 'EOF'
 #include <stdio.h>

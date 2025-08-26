@@ -120,6 +120,11 @@ test_cmake_config() {
     
     log_info "测试CMAKE配置 ($arch)..."
     
+    # 如果在scripts目录中，先回到项目根目录
+    if [[ $(basename "$(pwd)") == "scripts" ]]; then
+        cd ..
+    fi
+    
     rm -rf "$build_dir"
     mkdir -p "$build_dir"
     cd "$build_dir"
@@ -164,6 +169,11 @@ test_quick_build() {
     
     log_info "快速编译测试 ($arch)..."
     
+    # 如果在scripts目录中，先回到项目根目录
+    if [[ $(basename "$(pwd)") == "scripts" ]]; then
+        cd ..
+    fi
+    
     cd "$build_dir"
     
     # 只编译一个源文件测试
@@ -184,6 +194,11 @@ test_full_build() {
     local build_dir="build-ci-test-$arch"
     
     log_info "完整编译测试 ($arch)..."
+    
+    # 如果在scripts目录中，先回到项目根目录
+    if [[ $(basename "$(pwd)") == "scripts" ]]; then
+        cd ..
+    fi
     
     cd "$build_dir"
     
@@ -226,6 +241,11 @@ test_functionality() {
     fi
     
     log_info "插件功能测试 ($arch)..."
+    
+    # 如果在scripts目录中，先回到项目根目录
+    if [[ $(basename "$(pwd)") == "scripts" ]]; then
+        cd ..
+    fi
     
     cd "$build_dir"
     

@@ -2,7 +2,9 @@
 
 echo "=== 快速测试ARM64版本混淆功能 ==="
 
-PROJECT_ROOT="/mnt/d/code_project/geekrun/external_fork/Kotoamatsukami"
+# 动态检测项目根目录
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+PROJECT_ROOT="$( cd "$SCRIPT_DIR/.." &> /dev/null && pwd )"
 cd "$PROJECT_ROOT" || exit 1
 
 # 检查ARM64版本是否存在
