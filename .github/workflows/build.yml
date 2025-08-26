@@ -133,6 +133,17 @@ jobs:
       run: |
         cd build-x86_64
         
+        # Detect the SO file name
+        if [ -f "libKotoamatsukami.so" ]; then
+          SO_FILE="libKotoamatsukami.so"
+        elif [ -f "Kotoamatsukami.so" ]; then
+          SO_FILE="Kotoamatsukami.so"
+        else
+          echo "未找到生成的SO文件进行测试"
+          ls -lh *.so
+          exit 1
+        fi
+        
         # Create simple test
         echo "int main(){return 0;}" > test.c
         

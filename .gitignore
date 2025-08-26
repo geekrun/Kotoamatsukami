@@ -80,3 +80,4 @@ docs/_build/
 demo_*
 test_output*
 *.output
+/bin/
