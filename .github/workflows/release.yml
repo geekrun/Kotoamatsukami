@@ -151,69 +151,106 @@ jobs:
       run: |
         cd build-${{ matrix.arch }}
         
-        # 创建测试用例
-        cat > android_jni_test.c << 'EOF'
-        #include <jni.h>
+        # 创建测试用例（模拟需要保护的敏感代码）
+        cat > test_obfuscation.c << 'EOF'
+        #include <stdio.h>
         #include <string.h>
+        #include <stdlib.h>
 
-        static const char* secret_key = "MySecretAPIKey123456";
+        // 模拟需要保护的全局变量
+        static const char* secret_api_key = "MySecretAPIKey123456";
+        static const char* license_key = "PROD-LICENSE-2024-ABCD";
         static int global_counter = 0;
+        static int debug_flag = 0;
 
-        JNIEXPORT jstring JNICALL
-        Java_com_example_Native_getSecret(JNIEnv *env, jobject thiz) {
+        // 模拟加密算法
+        char* encrypt_string(const char* input) {
             global_counter++;
-            char buffer[64];
-            strcpy(buffer, secret_key);
+            int len = strlen(input);
+            char* result = malloc(len + 1);
             
-            // 简单加密
-            for(int i = 0; buffer[i]; i++) {
-                buffer[i] ^= (global_counter & 0xFF);
+            for(int i = 0; i < len; i++) {
+                result[i] = input[i] ^ (global_counter & 0xFF);
             }
-            
-            return (*env)->NewStringUTF(env, buffer);
+            result[len] = '\0';
+            return result;
         }
 
-        JNIEXPORT jint JNICALL
-        Java_com_example_Native_calculate(JNIEnv *env, jobject thiz, jint a, jint b) {
+        // 模拟关键算法逻辑
+        int critical_calculation(int a, int b) {
+            if (debug_flag) {
+                printf("Debug: calculating %d, %d\n", a, b);
+            }
+            
             if (a > b) {
                 return a * b + global_counter;
-            } else {
+            } else if (a < b) {
                 return (a + b) * global_counter;
+            } else {
+                return a + global_counter * 2;
             }
+        }
+
+        // 模拟许可证验证
+        int verify_license(const char* input_key) {
+            if (!input_key) return 0;
+            
+            int result = strcmp(input_key, license_key);
+            if (result == 0) {
+                global_counter += 10;
+                return 1;
+            }
+            return 0;
+        }
+
+        int main() {
+            printf("Testing obfuscation on sensitive code...\n");
+            
+            char* encrypted = encrypt_string(secret_api_key);
+            int calc_result = critical_calculation(42, 37);
+            int license_valid = verify_license(license_key);
+            
+            printf("Results: %p, %d, %d\n", encrypted, calc_result, license_valid);
+            
+            free(encrypted);
+            return 0;
         }
         EOF
         
         # 生成LLVM IR
-        clang-17 -S -emit-llvm -O1 android_jni_test.c -o android_jni_test.ll
+        clang-17 -S -emit-llvm -O1 test_obfuscation.c -o test_obfuscation.ll
         
         echo "=== Original IR size ==="
-        wc -l android_jni_test.ll
+        wc -l test_obfuscation.ll
         
         # 应用轻度混淆
         opt-17 --load-pass-plugin=./$SO_FILE \
           --passes="gv-encrypt,bogus-control-flow" \
-          -S android_jni_test.ll -o android_jni_light.ll
+          -S test_obfuscation.ll -o test_obfuscation_light.ll
           
         # 应用强度混淆
         opt-17 --load-pass-plugin=./$SO_FILE \
           --passes="gv-encrypt,bogus-control-flow,flatten,split-basic-block" \
-          -S android_jni_test.ll -o android_jni_heavy.ll || true
+          -S test_obfuscation.ll -o test_obfuscation_heavy.ll || true
         
         echo "=== Obfuscation Results ==="
-        echo "Original:  $(wc -l < android_jni_test.ll) lines"
-        echo "Light:     $(wc -l < android_jni_light.ll) lines"
-        if [ -f android_jni_heavy.ll ]; then
-          echo "Heavy:     $(wc -l < android_jni_heavy.ll) lines"
+        echo "Original:  $(wc -l < test_obfuscation.ll) lines"
+        echo "Light:     $(wc -l < test_obfuscation_light.ll) lines"
+        if [ -f test_obfuscation_heavy.ll ]; then
+          echo "Heavy:     $(wc -l < test_obfuscation_heavy.ll) lines"
         fi
         
         # 编译验证
-        clang-17 -shared -fPIC android_jni_light.ll -o libtest_light.so
-        echo "✅ Light obfuscation test passed"
+        clang-17 test_obfuscation_light.ll -o test_light
+        echo "✅ Light obfuscation compilation test passed"
         
-        if [ -f android_jni_heavy.ll ]; then
-          clang-17 -shared -fPIC android_jni_heavy.ll -o libtest_heavy.so
-          echo "✅ Heavy obfuscation test passed"
+        if [ -f test_obfuscation_heavy.ll ]; then
+          clang-17 test_obfuscation_heavy.ll -o test_heavy
+          echo "✅ Heavy obfuscation compilation test passed"
         fi
+        
+        # 运行测试验证功能正常
+        ./test_light && echo "✅ Light obfuscated program runs correctly"
         
     - name: Show build stats
       run: |
