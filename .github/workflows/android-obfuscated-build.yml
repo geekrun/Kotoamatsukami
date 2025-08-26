@@ -167,16 +167,18 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x android_example/gradlew
     
-    - name: Debug CI File Structure
+    - name: Debug CI File Structure  
       run: |
         echo "🔍 Checking CI file structure..."
         pwd
         ls -la
-        echo "🔍 Checking plugin file..."
-        ls -la bin/Kotoamatsukami.so || echo "❌ Plugin not found at bin/Kotoamatsukami.so"
-        ls -la compiler/Kotoamatsukami.config || echo "❌ Config not found at compiler/Kotoamatsukami.config"
-        echo "🔍 Full directory tree from root:"
-        find . -name "Kotoamatsukami.so" -o -name "Kotoamatsukami.config"
+        echo "🔍 Checking for downloaded artifacts..."
+        find . -name "Kotoamatsukami.so" -o -name "Kotoamatsukami.config" -exec ls -lh {} \;
+        echo "🔍 Current directory structure:"
+        tree -L 3 . 2>/dev/null || find . -type d -maxdepth 3 | head -20
+        echo "🔍 Checking hardcoded paths..."
+        ls -la /home/runner/work/Kotoamatsukami/Kotoamatsukami/bin/Kotoamatsukami.so 2>/dev/null && echo "✅ Plugin found at hardcoded path" || echo "❌ Plugin NOT found at hardcoded path"
+        ls -la /home/runner/work/Kotoamatsukami/Kotoamatsukami/compiler/Kotoamatsukami.config 2>/dev/null && echo "✅ Config found at hardcoded path" || echo "❌ Config NOT found at hardcoded path"
     
     - name: Update CMakeLists.txt for Three-Stage IR Compilation
       run: |
@@ -196,18 +198,58 @@ jobs:
 
         message(STATUS "🚀 Three-stage IR obfuscation compilation enabled")
         
-        # 固定路径配置（CI环境）
-        set(KOTOAMATSUKAMI_PLUGIN "/home/runner/work/Kotoamatsukami/Kotoamatsukami/bin/Kotoamatsukami.so")
-        set(OBFUSCATION_CONFIG "/home/runner/work/Kotoamatsukami/Kotoamatsukami/compiler/Kotoamatsukami.config")
+        # 灵活路径搜索（CI环境）
+        set(PLUGIN_SEARCH_PATHS
+            "\${CMAKE_CURRENT_SOURCE_DIR}/../../../../../bin/Kotoamatsukami.so"
+            "/home/runner/work/Kotoamatsukami/Kotoamatsukami/bin/Kotoamatsukami.so"
+            "./bin/Kotoamatsukami.so"
+            "./Kotoamatsukami.so"
+        )
+        
+        set(CONFIG_SEARCH_PATHS
+            "\${CMAKE_CURRENT_SOURCE_DIR}/../../../../../compiler/Kotoamatsukami.config"
+            "/home/runner/work/Kotoamatsukami/Kotoamatsukami/compiler/Kotoamatsukami.config"
+            "./compiler/Kotoamatsukami.config"
+            "./Kotoamatsukami.config"
+        )
+        
         set(HOST_OPT "opt-17")  # 主机LLVM 17 opt工具
         
-        # 验证必要文件存在
-        if(NOT EXISTS "\${KOTOAMATSUKAMI_PLUGIN}")
-            message(FATAL_ERROR "❌ OLLVM plugin not found: \${KOTOAMATSUKAMI_PLUGIN}")
+        # 查找插件文件
+        set(KOTOAMATSUKAMI_PLUGIN "")
+        foreach(PLUGIN_PATH \${PLUGIN_SEARCH_PATHS})
+            if(EXISTS "\${PLUGIN_PATH}")
+                set(KOTOAMATSUKAMI_PLUGIN "\${PLUGIN_PATH}")
+                message(STATUS "✅ Found plugin at: \${PLUGIN_PATH}")
+                break()
+            endif()
+        endforeach()
+        
+        # 查找配置文件
+        set(OBFUSCATION_CONFIG "")
+        foreach(CONFIG_PATH \${CONFIG_SEARCH_PATHS})
+            if(EXISTS "\${CONFIG_PATH}")
+                set(OBFUSCATION_CONFIG "\${CONFIG_PATH}")
+                message(STATUS "✅ Found config at: \${CONFIG_PATH}")
+                break()
+            endif()
+        endforeach()
+        
+        # 验证文件找到
+        if("\${KOTOAMATSUKAMI_PLUGIN}" STREQUAL "")
+            message(STATUS "❌ Plugin search failed! Tried paths:")
+            foreach(PLUGIN_PATH \${PLUGIN_SEARCH_PATHS})
+                message(STATUS "   - \${PLUGIN_PATH}")
+            endforeach()
+            message(FATAL_ERROR "❌ OLLVM plugin not found in any search path")
         endif()
         
-        if(NOT EXISTS "\${OBFUSCATION_CONFIG}")
-            message(FATAL_ERROR "❌ OLLVM config not found: \${OBFUSCATION_CONFIG}")
+        if("\${OBFUSCATION_CONFIG}" STREQUAL "")
+            message(STATUS "❌ Config search failed! Tried paths:")
+            foreach(CONFIG_PATH \${CONFIG_SEARCH_PATHS})
+                message(STATUS "   - \${CONFIG_PATH}")
+            endforeach()
+            message(FATAL_ERROR "❌ OLLVM config not found in any search path")
         endif()
         
         # 验证主机opt工具
