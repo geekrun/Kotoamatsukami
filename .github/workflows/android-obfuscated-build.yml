@@ -1,0 +1,342 @@
+name: Android Obfuscated Build
+
+on:
+  push:
+    branches: [ main, llvm-17-plugins ]
+    paths:
+      - 'android_example/**'
+      - 'src/**'
+      - 'CMakeLists.txt'
+      - '.github/workflows/android-obfuscated-build.yml'
+  pull_request:
+    branches: [ main, llvm-17-plugins ]
+    paths:
+      - 'android_example/**'
+      - 'src/**'
+      - 'CMakeLists.txt'
+      - '.github/workflows/android-obfuscated-build.yml'
+  workflow_dispatch:
+
+jobs:
+  build-plugin:
+    name: Build LLVM Plugin (x86_64)
+    runs-on: ubuntu-24.04
+    
+    outputs:
+      plugin-cache-key: ${{ steps.cache-plugin.outputs.cache-hit }}
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+    
+    - name: Cache LLVM Plugin
+      id: cache-plugin
+      uses: actions/cache@v4
+      with:
+        path: |
+          bin/Kotoamatsukami.so
+          compiler/Kotoamatsukami.config
+        key: llvm-plugin-${{ runner.os }}-${{ hashFiles('src/**', 'CMakeLists.txt') }}
+        restore-keys: |
+          llvm-plugin-${{ runner.os }}-
+    
+    - name: Install LLVM-17 and dependencies
+      if: steps.cache-plugin.outputs.cache-hit != 'true'
+      run: |
+        # 更新GPG密钥管理
+        wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | sudo tee /etc/apt/trusted.gpg.d/llvm.asc > /dev/null
+        echo "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-17 main" | sudo tee /etc/apt/sources.list.d/llvm-17.list
+        sudo apt-get update
+        sudo apt-get install -f -y
+        
+        # 安装构建依赖
+        sudo apt-get install -y cmake ninja-build build-essential
+        
+        # 安装LLVM 17 - 支持Ubuntu 24.04
+        sudo apt-get install -y \
+          llvm-17 \
+          llvm-17-dev \
+          llvm-17-runtime \
+          clang-17 || \
+        sudo apt-get install -y \
+          llvm-17 \
+          llvm-17-dev \
+          llvm-17-runtime \
+          clang-17 \
+          libllvm17t64
+    
+    - name: Build Plugin
+      if: steps.cache-plugin.outputs.cache-hit != 'true'
+      run: |
+        mkdir -p build-ci-plugin
+        cd build-ci-plugin
+        
+        cmake .. \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_CXX_COMPILER=clang++-17 \
+          -DCMAKE_C_COMPILER=clang-17 \
+          -DLLVM_DIR=/usr/lib/llvm-17/lib/cmake/llvm
+        
+        make -j$(nproc)
+        
+        # 检查插件文件
+        if [ -f "libKotoamatsukami.so" ]; then
+            SO_FILE="libKotoamatsukami.so"
+        elif [ -f "Kotoamatsukami.so" ]; then
+            SO_FILE="Kotoamatsukami.so"
+        else
+            echo "❌ Plugin build failed - no .so file found"
+            ls -lh *.so 2>/dev/null || echo "No .so files found"
+            exit 1
+        fi
+        
+        # 复制到标准位置
+        mkdir -p ../bin
+        cp $SO_FILE ../bin/Kotoamatsukami.so
+        
+        echo "✅ Plugin built successfully: ../bin/Kotoamatsukami.so"
+        ls -lh ../bin/Kotoamatsukami.so
+        file ../bin/Kotoamatsukami.so
+    
+    - name: Upload Plugin Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: kotoamatsukami-plugin
+        path: |
+          bin/Kotoamatsukami.so
+          compiler/Kotoamatsukami.config
+
+  build-android-obfuscated:
+    name: Build Android APK (Obfuscated)
+    runs-on: ubuntu-24.04
+    needs: build-plugin
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+    
+    - name: Download Plugin Artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: kotoamatsukami-plugin
+        path: .
+    
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+    
+    - name: Install Android SDK
+      uses: android-actions/setup-android@v3
+      with:
+        api-level: 34
+        build-tools: '34.0.0'
+        ndk-version: '26.3.11579264'
+    
+    - name: Install LLVM-17 for obfuscation
+      run: |
+        # 安装系统LLVM用于混淆第一阶段
+        wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | sudo tee /etc/apt/trusted.gpg.d/llvm.asc > /dev/null
+        echo "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-17 main" | sudo tee /etc/apt/sources.list.d/llvm-17.list
+        sudo apt-get update
+        sudo apt-get install -y clang-17 llvm-17
+    
+    - name: Verify Plugin and Config
+      run: |
+        echo "🔍 Verifying plugin and config files..."
+        ls -lh bin/Kotoamatsukami.so
+        file bin/Kotoamatsukami.so
+        ls -lh compiler/Kotoamatsukami.config
+        cat compiler/Kotoamatsukami.config | head -10
+    
+    - name: Cache Gradle packages
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+    
+    - name: Grant execute permission for gradlew
+      run: chmod +x android_example/gradlew
+    
+    - name: Update CMakeLists.txt for CI Environment
+      run: |
+        cd android_example/app/src/main/cpp
+        
+        # 更新CMakeLists.txt以适应CI环境路径
+        cat > CMakeLists.txt << 'EOF'
+# CMakeLists.txt for CI Android Obfuscated Build
+cmake_minimum_required(VERSION 3.22.1)
+project("ollvm_demo")
+
+# 混淆配置
+option(ENABLE_OBFUSCATION "Enable code obfuscation" ON)
+
+# 源文件列表
+set(DEMO_SOURCES native-lib.cpp)
+
+# 在CI环境中启用两阶段混淆编译
+if(ENABLE_OBFUSCATION)
+    message(STATUS "🔧 CI Two-stage obfuscation compilation enabled")
+    
+    # CI环境中的插件和配置路径
+    set(KOTOAMATSUKAMI_PLUGIN "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../bin/Kotoamatsukami.so")
+    set(OBFUSCATION_CONFIG "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../compiler/Kotoamatsukami.config")
+    
+    # 验证文件存在
+    if(NOT EXISTS "${KOTOAMATSUKAMI_PLUGIN}")
+        message(FATAL_ERROR "❌ Plugin not found: ${KOTOAMATSUKAMI_PLUGIN}")
+    endif()
+    
+    if(NOT EXISTS "${OBFUSCATION_CONFIG}")
+        message(FATAL_ERROR "❌ Config not found: ${OBFUSCATION_CONFIG}")
+    endif()
+    
+    message(STATUS "✅ CI obfuscation files verified")
+    message(STATUS "   Plugin: ${KOTOAMATSUKAMI_PLUGIN}")
+    message(STATUS "   Config: ${OBFUSCATION_CONFIG}")
+    
+    # 复制配置文件到构建目录
+    configure_file("${OBFUSCATION_CONFIG}" "${CMAKE_BINARY_DIR}/Kotoamatsukami.config" COPYONLY)
+    
+    # 第一阶段：使用系统LLVM + 插件生成混淆IR，第二阶段：Android NDK编译目标文件
+    set(OBFUSCATED_OBJ_FILES "")
+    foreach(SOURCE_FILE ${DEMO_SOURCES})
+        get_filename_component(SOURCE_NAME ${SOURCE_FILE} NAME_WE)
+        set(IR_FILE "${CMAKE_BINARY_DIR}/${SOURCE_NAME}_obfuscated.ll")
+        set(OBJ_FILE "${CMAKE_BINARY_DIR}/${SOURCE_NAME}_obfuscated.o")
+        list(APPEND OBFUSCATED_OBJ_FILES ${OBJ_FILE})
+        
+        # 第一阶段：系统clang-17 + 插件 -> 混淆IR
+        add_custom_command(
+            OUTPUT ${IR_FILE}
+            COMMAND clang-17
+                -S -emit-llvm
+                -fpass-plugin=${KOTOAMATSUKAMI_PLUGIN}
+                -std=c++17
+                -stdlib=libc++
+                -I${ANDROID_NDK}/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include
+                -I${ANDROID_NDK}/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/aarch64-linux-android
+                -I${ANDROID_NDK}/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/c++/v1
+                -DANDROID
+                -fPIC
+                -target aarch64-linux-android24
+                -o ${IR_FILE}
+                ${CMAKE_CURRENT_SOURCE_DIR}/${SOURCE_FILE}
+            DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/${SOURCE_FILE} ${KOTOAMATSUKAMI_PLUGIN}
+            WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+            COMMENT "🔒 CI Stage 1: Obfuscating ${SOURCE_FILE} with system clang-17..."
+        )
+        
+        # 第二阶段：Android NDK -> 目标文件
+        add_custom_command(
+            OUTPUT ${OBJ_FILE}
+            COMMAND ${CMAKE_CXX_COMPILER}
+                --target=aarch64-none-linux-android24
+                --sysroot=${ANDROID_NDK}/toolchains/llvm/prebuilt/linux-x86_64/sysroot
+                -DANDROID -fdata-sections -ffunction-sections -funwind-tables
+                -fstack-protector-strong -no-canonical-prefixes
+                -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security
+                -std=c++17 -fno-limit-debug-info -fPIC
+                -c ${IR_FILE} -o ${OBJ_FILE}
+            DEPENDS ${IR_FILE}
+            WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+            COMMENT "🎯 CI Stage 2: Compiling obfuscated IR ${SOURCE_NAME} with Android NDK..."
+        )
+    endforeach()
+    
+    # 创建目标文件生成任务
+    add_custom_target(generate_obfuscated_objects DEPENDS ${OBFUSCATED_OBJ_FILES})
+    
+    # 创建库
+    add_library(${CMAKE_PROJECT_NAME} SHARED)
+    set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES LINKER_LANGUAGE CXX)
+    target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${OBFUSCATED_OBJ_FILES})
+    add_dependencies(${CMAKE_PROJECT_NAME} generate_obfuscated_objects)
+    
+    message(STATUS "🎯 CI Two-stage obfuscation configured:")
+    message(STATUS "   Stage 1: System clang-17 + plugin -> IR files")
+    message(STATUS "   Stage 2: Android NDK -> final .so")
+else()
+    # 标准编译（后备）
+    add_library(${CMAKE_PROJECT_NAME} SHARED ${DEMO_SOURCES})
+endif()
+
+# 链接库
+target_link_libraries(${CMAKE_PROJECT_NAME} android log)
+EOF
+        
+        echo "✅ CMakeLists.txt updated for CI environment"
+    
+    - name: Build Obfuscated APK
+      run: |
+        cd android_example
+        
+        # 设置环境变量
+        export ANDROID_HOME=$ANDROID_SDK_ROOT
+        export ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk/26.3.11579264
+        export ANDROID_NDK=$ANDROID_NDK_HOME
+        
+        echo "🏗️ Building obfuscated Android APK..."
+        echo "ANDROID_HOME=$ANDROID_HOME"
+        echo "ANDROID_NDK_HOME=$ANDROID_NDK_HOME"
+        
+        # 构建Debug APK（启用混淆）
+        ./gradlew assembleDebug --stacktrace --info
+    
+    - name: Verify Obfuscated APK
+      run: |
+        cd android_example
+        
+        # 检查APK是否生成
+        APK_PATH="app/build/outputs/apk/debug/app-debug.apk"
+        if [ -f "$APK_PATH" ]; then
+            echo "✅ Obfuscated APK built successfully!"
+            ls -lh "$APK_PATH"
+            
+            # 提取并检查.so文件大小
+            unzip -l "$APK_PATH" | grep "libollvm_demo.so" || echo "⚠️  .so file not found in APK"
+            
+            # 提取.so文件进行分析
+            mkdir -p apk_analysis
+            unzip "$APK_PATH" -d apk_analysis
+            
+            SO_FILE="apk_analysis/lib/arm64-v8a/libollvm_demo.so"
+            if [ -f "$SO_FILE" ]; then
+                echo "📊 Obfuscated .so file analysis:"
+                ls -lh "$SO_FILE"
+                file "$SO_FILE"
+                echo "✅ Obfuscation likely successful - ready for reverse engineering analysis"
+            else
+                echo "❌ .so file not found in APK"
+                find apk_analysis -name "*.so" -type f
+            fi
+        else
+            echo "❌ APK build failed"
+            exit 1
+        fi
+    
+    - name: Upload Obfuscated APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: obfuscated-android-apk
+        path: |
+          android_example/app/build/outputs/apk/debug/app-debug.apk
+          android_example/apk_analysis/lib/arm64-v8a/libollvm_demo.so
+    
+    - name: Upload Build Logs
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: android-build-logs
+        path: |
+          android_example/app/.cxx/
+          android_example/app/build/reports/
