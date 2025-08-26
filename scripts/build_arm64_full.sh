@@ -13,7 +13,16 @@ apt update
 apt install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu libc6-dev-arm64-cross
 
 echo -e "${YELLOW}创建ARM64构建目录...${NC}"
-cd ..  # 回到项目根目录
+
+# 动态检测并确保在项目根目录
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+PROJECT_ROOT="$( cd "$SCRIPT_DIR/.." &> /dev/null && pwd )"
+
+echo "脚本目录: $SCRIPT_DIR"
+echo "项目根目录: $PROJECT_ROOT"
+
+cd "$PROJECT_ROOT" || exit 1
+
 rm -rf build-arm64-full
 mkdir build-arm64-full
 cd build-arm64-full

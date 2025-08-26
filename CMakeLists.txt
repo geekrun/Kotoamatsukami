@@ -57,8 +57,18 @@ FetchContent_MakeAvailable(json)
 message(${LLVM_INCLUDE_DIRS})
 include_directories(${LLVM_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/include)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib/json/include)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib/json/single_include/nlohmann)
+
+# nlohmann/json库配置 - 支持本地和远程下载两种方式
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/lib/json/single_include/nlohmann/json.hpp")
+    # 本地json库存在，使用本地版本
+    include_directories("${CMAKE_CURRENT_SOURCE_DIR}/lib/json/single_include/nlohmann")
+    message(STATUS "Using local nlohmann/json from: ${CMAKE_CURRENT_SOURCE_DIR}/lib/json/single_include/nlohmann")
+    set(JSON_LOCAL_AVAILABLE TRUE)
+else()
+    # 本地json库不存在，依赖FetchContent下载
+    message(STATUS "Local json library not found, will use FetchContent to download")
+    set(JSON_LOCAL_AVAILABLE FALSE)
+endif()
 
 # 检测是否是交叉编译
 if(CMAKE_CROSSCOMPILING)
@@ -114,6 +124,11 @@ if(CMAKE_CROSSCOMPILING)
     # 添加LLVM编译定义和包含路径
     target_compile_definitions(Kotoamatsukami PRIVATE ${LLVM_DEFINITIONS})
     target_include_directories(Kotoamatsukami PRIVATE ${LLVM_INCLUDE_DIRS})
+    
+    # 根据json库类型决定是否链接target (ARM64交叉编译)
+    if(NOT JSON_LOCAL_AVAILABLE)
+        target_link_libraries(Kotoamatsukami PRIVATE nlohmann_json::nlohmann_json)
+    endif()
 
     # ARM64交叉编译时不链接LLVM库，运行时由opt工具提供符号解析
 
@@ -123,6 +138,11 @@ else()
     include(HandleLLVMOptions)
 
     add_llvm_pass_plugin(Kotoamatsukami ${KOTOAMATSUKAMI_SOURCES})
+    
+    # 根据json库类型决定是否链接target (x86_64本地编译)
+    if(NOT JSON_LOCAL_AVAILABLE)
+        target_link_libraries(Kotoamatsukami PRIVATE nlohmann_json::nlohmann_json)
+    endif()
 endif()
 
 
