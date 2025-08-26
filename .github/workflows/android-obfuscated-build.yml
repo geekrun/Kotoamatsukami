@@ -178,144 +178,126 @@ jobs:
         echo "🔍 Full directory tree from root:"
         find . -name "Kotoamatsukami.so" -o -name "Kotoamatsukami.config"
     
-    - name: Update CMakeLists.txt for CI Environment
+    - name: Update CMakeLists.txt for Three-Stage IR Compilation
       run: |
         cd android_example/app/src/main/cpp
         
-        # 更新CMakeLists.txt以适应CI环境路径
+        # 实现基于IR中间阶段的三段式编译流程
+        # Stage 1: NDK clang (source → LLVM IR)
+        # Stage 2: Host opt + OLLVM plugin (IR → obfuscated IR)  
+        # Stage 3: NDK clang (obfuscated IR → native objects)
         cat > CMakeLists.txt << 'CMAKEEOF'
-        # CMakeLists.txt for CI Android Obfuscated Build
+        # Three-Stage IR-based OLLVM Obfuscation Pipeline
+        # 基于IR中间阶段的三段式OLLVM混淆流水线
+        # 避免插件直接加载到NDK clang进程，解决ABI兼容性问题
+        
         cmake_minimum_required(VERSION 3.22.1)
         project("ollvm_demo")
 
-        # 混淆配置
-        option(ENABLE_OBFUSCATION "Enable code obfuscation" ON)
-
-        # 源文件列表
-        set(DEMO_SOURCES native-lib.cpp)
-
-        # 在CI环境中启用两阶段混淆编译
-        if(ENABLE_OBFUSCATION)
-            message(STATUS "CI Two-stage obfuscation compilation enabled")
-            
-            # CI环境中的插件和配置路径 - 尝试多个可能的位置
-            set(PLUGIN_SEARCH_PATHS
-                "\${CMAKE_CURRENT_SOURCE_DIR}/../../../../../bin/Kotoamatsukami.so"
-                "/home/runner/work/Kotoamatsukami/Kotoamatsukami/bin/Kotoamatsukami.so"
-                "\${CMAKE_SOURCE_DIR}/bin/Kotoamatsukami.so"
-            )
-            
-            set(CONFIG_SEARCH_PATHS
-                "\${CMAKE_CURRENT_SOURCE_DIR}/../../../../../compiler/Kotoamatsukami.config"
-                "/home/runner/work/Kotoamatsukami/Kotoamatsukami/compiler/Kotoamatsukami.config"
-                "\${CMAKE_SOURCE_DIR}/compiler/Kotoamatsukami.config"
-            )
-            
-            # 查找插件文件
-            set(KOTOAMATSUKAMI_PLUGIN "")
-            foreach(PLUGIN_PATH \${PLUGIN_SEARCH_PATHS})
-                if(EXISTS "\${PLUGIN_PATH}")
-                    set(KOTOAMATSUKAMI_PLUGIN "\${PLUGIN_PATH}")
-                    message(STATUS "Found plugin at: \${PLUGIN_PATH}")
-                    break()
-                endif()
-            endforeach()
-            
-            # 查找配置文件  
-            set(OBFUSCATION_CONFIG "")
-            foreach(CONFIG_PATH \${CONFIG_SEARCH_PATHS})
-                if(EXISTS "\${CONFIG_PATH}")
-                    set(OBFUSCATION_CONFIG "\${CONFIG_PATH}")
-                    message(STATUS "Found config at: \${CONFIG_PATH}")
-                    break()
-                endif()
-            endforeach()
-            
-            # 验证文件存在
-            if("\${KOTOAMATSUKAMI_PLUGIN}" STREQUAL "")
-                message(FATAL_ERROR "Plugin not found in any of the search paths")
-            endif()
-            
-            if("\${OBFUSCATION_CONFIG}" STREQUAL "")
-                message(FATAL_ERROR "Config file not found in any of the search paths")
-            endif()
-            
-            if(NOT EXISTS "\${OBFUSCATION_CONFIG}")
-                message(FATAL_ERROR "Config not found: \${OBFUSCATION_CONFIG}")
-            endif()
-            
-            message(STATUS "CI obfuscation files verified")
-            message(STATUS "   Plugin: \${KOTOAMATSUKAMI_PLUGIN}")
-            message(STATUS "   Config: \${OBFUSCATION_CONFIG}")
-            
-            # 复制配置文件到构建目录
-            configure_file("\${OBFUSCATION_CONFIG}" "\${CMAKE_BINARY_DIR}/Kotoamatsukami.config" COPYONLY)
-            
-            # 第一阶段：使用系统LLVM + 插件生成混淆IR，第二阶段：Android NDK编译目标文件
-            set(OBFUSCATED_OBJ_FILES "")
-            foreach(SOURCE_FILE \${DEMO_SOURCES})
-                get_filename_component(SOURCE_NAME \${SOURCE_FILE} NAME_WE)
-                set(IR_FILE "\${CMAKE_BINARY_DIR}/\${SOURCE_NAME}_obfuscated.ll")
-                set(OBJ_FILE "\${CMAKE_BINARY_DIR}/\${SOURCE_NAME}_obfuscated.o")
-                list(APPEND OBFUSCATED_OBJ_FILES \${OBJ_FILE})
-                
-                # 第一阶段：系统clang-17 + 插件 -> 混淆IR
-                add_custom_command(
-                    OUTPUT \${IR_FILE}
-                    COMMAND clang-17
-                        -S -emit-llvm
-                        -fpass-plugin=\${KOTOAMATSUKAMI_PLUGIN}
-                        -std=c++17
-                        -stdlib=libc++
-                        -I\${ANDROID_NDK}/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include
-                        -I\${ANDROID_NDK}/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/aarch64-linux-android
-                        -I\${ANDROID_NDK}/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/c++/v1
-                        -DANDROID
-                        -fPIC
-                        -target aarch64-linux-android24
-                        -o \${IR_FILE}
-                        \${CMAKE_CURRENT_SOURCE_DIR}/\${SOURCE_FILE}
-                    DEPENDS \${CMAKE_CURRENT_SOURCE_DIR}/\${SOURCE_FILE} \${KOTOAMATSUKAMI_PLUGIN}
-                    WORKING_DIRECTORY \${CMAKE_BINARY_DIR}
-                    COMMENT "CI Stage 1: Obfuscating \${SOURCE_FILE} with system clang-17..."
-                )
-                
-                # 第二阶段：Android NDK -> 目标文件
-                add_custom_command(
-                    OUTPUT \${OBJ_FILE}
-                    COMMAND \${CMAKE_CXX_COMPILER}
-                        --target=aarch64-none-linux-android24
-                        --sysroot=\${ANDROID_NDK}/toolchains/llvm/prebuilt/linux-x86_64/sysroot
-                        -DANDROID -fdata-sections -ffunction-sections -funwind-tables
-                        -fstack-protector-strong -no-canonical-prefixes
-                        -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security
-                        -std=c++17 -fno-limit-debug-info -fPIC
-                        -c \${IR_FILE} -o \${OBJ_FILE}
-                    DEPENDS \${IR_FILE}
-                    WORKING_DIRECTORY \${CMAKE_BINARY_DIR}
-                    COMMENT "CI Stage 2: Compiling obfuscated IR \${SOURCE_NAME} with Android NDK..."
-                )
-            endforeach()
-            
-            # 创建目标文件生成任务
-            add_custom_target(generate_obfuscated_objects DEPENDS \${OBFUSCATED_OBJ_FILES})
-            
-            # 创建库
-            add_library(\${CMAKE_PROJECT_NAME} SHARED)
-            set_target_properties(\${CMAKE_PROJECT_NAME} PROPERTIES LINKER_LANGUAGE CXX)
-            target_sources(\${CMAKE_PROJECT_NAME} PRIVATE \${OBFUSCATED_OBJ_FILES})
-            add_dependencies(\${CMAKE_PROJECT_NAME} generate_obfuscated_objects)
-            
-            message(STATUS "CI Two-stage obfuscation configured:")
-            message(STATUS "   Stage 1: System clang-17 + plugin -> IR files")
-            message(STATUS "   Stage 2: Android NDK -> final .so")
-        else()
-            # 标准编译（后备）
-            add_library(\${CMAKE_PROJECT_NAME} SHARED \${DEMO_SOURCES})
+        message(STATUS "🚀 Three-stage IR obfuscation compilation enabled")
+        
+        # 固定路径配置（CI环境）
+        set(KOTOAMATSUKAMI_PLUGIN "/home/runner/work/Kotoamatsukami/Kotoamatsukami/bin/Kotoamatsukami.so")
+        set(OBFUSCATION_CONFIG "/home/runner/work/Kotoamatsukami/Kotoamatsukami/compiler/Kotoamatsukami.config")
+        set(HOST_OPT "opt-17")  # 主机LLVM 17 opt工具
+        
+        # 验证必要文件存在
+        if(NOT EXISTS "\${KOTOAMATSUKAMI_PLUGIN}")
+            message(FATAL_ERROR "❌ OLLVM plugin not found: \${KOTOAMATSUKAMI_PLUGIN}")
         endif()
-
-        # 链接库
+        
+        if(NOT EXISTS "\${OBFUSCATION_CONFIG}")
+            message(FATAL_ERROR "❌ OLLVM config not found: \${OBFUSCATION_CONFIG}")
+        endif()
+        
+        # 验证主机opt工具
+        execute_process(COMMAND which "\${HOST_OPT}" OUTPUT_VARIABLE OPT_PATH OUTPUT_STRIP_TRAILING_WHITESPACE)
+        if(OPT_PATH STREQUAL "")
+            message(FATAL_ERROR "❌ Host opt tool not found: \${HOST_OPT}")
+        endif()
+        message(STATUS "✅ Using host opt: \${OPT_PATH}")
+        
+        # NDK工具链配置
+        set(NDK_TARGET "aarch64-linux-android\${ANDROID_NATIVE_API_LEVEL}")
+        set(NDK_CLANG "\${ANDROID_TOOLCHAIN_ROOT}/bin/\${NDK_TARGET}-clang++")
+        
+        message(STATUS "🔧 NDK Clang: \${NDK_CLANG}")
+        message(STATUS "🎯 Target: \${NDK_TARGET}")
+        message(STATUS "📁 Sysroot: \${ANDROID_SYSROOT}")
+        
+        # 源文件列表
+        set(NATIVE_SOURCES "native-lib.cpp")
+        set(OBFUSCATED_OBJECTS "")
+        
+        # 三阶段编译流水线
+        foreach(SRC_FILE \${NATIVE_SOURCES})
+            get_filename_component(BASE_NAME "\${SRC_FILE}" NAME_WE)
+            message(STATUS "🔄 Processing \${SRC_FILE}...")
+            
+            # === 阶段1: 源码 → LLVM IR (NDK clang) ===
+            set(STAGE1_IR_FILE "\${CMAKE_BINARY_DIR}/stage1_\${BASE_NAME}.ll")
+            add_custom_command(
+                OUTPUT "\${STAGE1_IR_FILE}"
+                COMMAND "\${NDK_CLANG}"
+                    -O0 -g
+                    -fno-discard-value-names -S -emit-llvm
+                    -target "\${NDK_TARGET}"
+                    --sysroot "\${ANDROID_SYSROOT}"
+                    -D__ANDROID_API__=\${ANDROID_NATIVE_API_LEVEL}
+                    -DANDROID
+                    -I"\${ANDROID_NDK}/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include"
+                    -I"\${ANDROID_NDK}/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/aarch64-linux-android"
+                    -I"\${ANDROID_NDK}/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/c++/v1"
+                    -stdlib=libc++
+                    "\${CMAKE_CURRENT_SOURCE_DIR}/\${SRC_FILE}"
+                    -o "\${STAGE1_IR_FILE}"
+                DEPENDS "\${CMAKE_CURRENT_SOURCE_DIR}/\${SRC_FILE}"
+                COMMENT "📝 Stage 1: NDK clang (\${SRC_FILE} → IR)"
+            )
+            
+            # === 阶段2: IR → 混淆IR (主机opt + OLLVM插件) ===
+            set(STAGE2_IR_FILE "\${CMAKE_BINARY_DIR}/stage2_\${BASE_NAME}.obf.bc")
+            add_custom_command(
+                OUTPUT "\${STAGE2_IR_FILE}"
+                COMMAND env KOTOAMATSUKAMI_CONFIG="\${OBFUSCATION_CONFIG}"
+                    "\${HOST_OPT}"
+                    -load-pass-plugin="\${KOTOAMATSUKAMI_PLUGIN}"
+                    -passes="gv-encrypt,sub,fla,bcf,split"
+                    "\${STAGE1_IR_FILE}"
+                    -o "\${STAGE2_IR_FILE}"
+                DEPENDS "\${STAGE1_IR_FILE}" "\${KOTOAMATSUKAMI_PLUGIN}" "\${OBFUSCATION_CONFIG}"
+                COMMENT "🔐 Stage 2: Host opt + OLLVM (IR → Obfuscated IR for \${BASE_NAME})"
+            )
+            
+            # === 阶段3: 混淆IR → 目标文件 (NDK clang) ===
+            set(STAGE3_OBJ_FILE "\${CMAKE_BINARY_DIR}/stage3_\${BASE_NAME}.o")
+            add_custom_command(
+                OUTPUT "\${STAGE3_OBJ_FILE}"
+                COMMAND "\${NDK_CLANG}"
+                    -O2 -fPIC -c -x ir
+                    -target "\${NDK_TARGET}"
+                    --sysroot "\${ANDROID_SYSROOT}"
+                    "\${STAGE2_IR_FILE}"
+                    -o "\${STAGE3_OBJ_FILE}"
+                DEPENDS "\${STAGE2_IR_FILE}"
+                COMMENT "🏗️ Stage 3: NDK clang (Obfuscated IR → Native object for \${BASE_NAME})"
+            )
+            
+            list(APPEND OBFUSCATED_OBJECTS "\${STAGE3_OBJ_FILE}")
+        endforeach()
+        
+        # 最终库构建
+        add_library(\${CMAKE_PROJECT_NAME} SHARED \${OBFUSCATED_OBJECTS})
+        set_target_properties(\${CMAKE_PROJECT_NAME} PROPERTIES LINKER_LANGUAGE CXX)
+        
+        # 链接Android系统库
         target_link_libraries(\${CMAKE_PROJECT_NAME} android log)
+        
+        message(STATUS "✅ Three-stage IR obfuscation pipeline configured")
+        message(STATUS "   📝 Stage 1: NDK clang (Source → IR)")
+        message(STATUS "   🔐 Stage 2: Host opt + OLLVM (IR → Obfuscated IR)")  
+        message(STATUS "   🏗️ Stage 3: NDK clang (Obfuscated IR → Native object)")
+
         CMAKEEOF
         
         echo "✅ CMakeLists.txt updated for CI environment"
