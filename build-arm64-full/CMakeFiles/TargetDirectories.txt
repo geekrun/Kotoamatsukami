@@ -1,0 +1,9 @@
+/mnt/d/code_project/geekrun/external_fork/Kotoamatsukami/build-arm64-full/CMakeFiles/intrinsics_gen.dir
+/mnt/d/code_project/geekrun/external_fork/Kotoamatsukami/build-arm64-full/CMakeFiles/omp_gen.dir
+/mnt/d/code_project/geekrun/external_fork/Kotoamatsukami/build-arm64-full/CMakeFiles/acc_gen.dir
+/mnt/d/code_project/geekrun/external_fork/Kotoamatsukami/build-arm64-full/CMakeFiles/RISCVTargetParserTableGen.dir
+/mnt/d/code_project/geekrun/external_fork/Kotoamatsukami/build-arm64-full/CMakeFiles/Kotoamatsukami.dir
+/mnt/d/code_project/geekrun/external_fork/Kotoamatsukami/build-arm64-full/CMakeFiles/edit_cache.dir
+/mnt/d/code_project/geekrun/external_fork/Kotoamatsukami/build-arm64-full/CMakeFiles/rebuild_cache.dir
+/mnt/d/code_project/geekrun/external_fork/Kotoamatsukami/build-arm64-full/_deps/json-build/CMakeFiles/edit_cache.dir
+/mnt/d/code_project/geekrun/external_fork/Kotoamatsukami/build-arm64-full/_deps/json-build/CMakeFiles/rebuild_cache.dir

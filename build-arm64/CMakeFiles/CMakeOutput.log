@@ -1,0 +1,562 @@
+The target system is: Linux -  - aarch64
+The host system is: Linux - 6.6.87.2-microsoft-standard-WSL2 - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/local/bin/clang-17 
+Build flags: -target;aarch64-linux-gnu;-fuse-ld=lld
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is Clang, found in "/root/code/Kotoamatsukami/build-arm64/CMakeFiles/3.22.1/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/bin/clang++-17 
+Build flags: -target;aarch64-linux-gnu;-fuse-ld=lld
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is Clang, found in "/root/code/Kotoamatsukami/build-arm64/CMakeFiles/3.22.1/CompilerIdCXX/a.out"
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_88a79/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_88a79.dir/build.make CMakeFiles/cmTC_88a79.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_88a79.dir/CMakeCCompilerABI.c.o
+/usr/local/bin/clang-17   -target aarch64-linux-gnu -fuse-ld=lld    -v -MD -MT CMakeFiles/cmTC_88a79.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_88a79.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_88a79.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c
+clang version 17.0.6 (https://github.com/llvm/llvm-project.git 6009708b4367171ccdbf4b5905cb6a803753fe18)
+Target: aarch64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /usr/local/bin
+Found candidate GCC installation: /usr/lib/gcc-cross/aarch64-linux-gnu/11
+Selected GCC installation: /usr/lib/gcc-cross/aarch64-linux-gnu/11
+Candidate multilib: .;@m64
+Selected multilib: .;@m64
+clang-17: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+ (in-process)
+ "/usr/local/bin/clang-17" -cc1 -triple aarch64-unknown-linux-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=non-leaf -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu generic -target-feature +neon -target-feature +v8a -target-abi aapcs -debugger-tuning=gdb -v -fcoverage-compilation-dir=/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp -resource-dir /usr/local/lib/clang/17 -dependency-file CMakeFiles/cmTC_88a79.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_88a79.dir/CMakeCCompilerABI.c.o -sys-header-deps -internal-isystem /usr/local/lib/clang/17/include -internal-isystem /usr/local/include -internal-isystem /usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdebug-compilation-dir=/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp -ferror-limit 19 -fno-signed-char -fgnuc-version=4.2.1 -target-feature +outline-atomics -target-feature -fmv -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_88a79.dir/CMakeCCompilerABI.c.o -x c /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c
+clang -cc1 version 17.0.6 based upon LLVM 17.0.6 default target x86_64-unknown-linux-gnu
+ignoring nonexistent directory "/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/local/lib/clang/17/include
+ /usr/local/include
+ /usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include
+ /usr/include
+End of search list.
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking C executable cmTC_88a79
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_88a79.dir/link.txt --verbose=1
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/usr/local/bin/clang-17 -target aarch64-linux-gnu -fuse-ld=lld   -v CMakeFiles/cmTC_88a79.dir/CMakeCCompilerABI.c.o -o cmTC_88a79 
+clang version 17.0.6 (https://github.com/llvm/llvm-project.git 6009708b4367171ccdbf4b5905cb6a803753fe18)
+Target: aarch64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /usr/local/bin
+Found candidate GCC installation: /usr/lib/gcc-cross/aarch64-linux-gnu/11
+Selected GCC installation: /usr/lib/gcc-cross/aarch64-linux-gnu/11
+Candidate multilib: .;@m64
+Selected multilib: .;@m64
+ "/usr/local/bin/ld.lld" -pie -EL -z relro --hash-style=gnu --eh-frame-hdr -m aarch64linux -dynamic-linker /lib/ld-linux-aarch64.so.1 -o cmTC_88a79 /usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/Scrt1.o /usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/crti.o /usr/lib/gcc-cross/aarch64-linux-gnu/11/crtbeginS.o -L/usr/lib/gcc-cross/aarch64-linux-gnu/11 -L/usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../lib64 -L/lib/aarch64-linux-gnu -L/lib/../lib64 -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib64 -L/usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib -L/lib -L/usr/lib CMakeFiles/cmTC_88a79.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc-cross/aarch64-linux-gnu/11/crtendS.o /usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/crtn.o
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/usr/local/lib/clang/17/include]
+    add: [/usr/local/include]
+    add: [/usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/usr/local/lib/clang/17/include] ==> [/usr/local/lib/clang/17/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include] ==> [/usr/aarch64-linux-gnu/include]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/usr/local/lib/clang/17/include;/usr/local/include;/usr/aarch64-linux-gnu/include;/usr/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld\.lld-17|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_88a79/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_88a79.dir/build.make CMakeFiles/cmTC_88a79.dir/build]
+  ignore line: [gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)]
+  ignore line: [Building C object CMakeFiles/cmTC_88a79.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/local/bin/clang-17   -target aarch64-linux-gnu -fuse-ld=lld    -v -MD -MT CMakeFiles/cmTC_88a79.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_88a79.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_88a79.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c]
+  ignore line: [clang version 17.0.6 (https://github.com/llvm/llvm-project.git 6009708b4367171ccdbf4b5905cb6a803753fe18)]
+  ignore line: [Target: aarch64-unknown-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /usr/local/bin]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc-cross/aarch64-linux-gnu/11]
+  ignore line: [Selected GCC installation: /usr/lib/gcc-cross/aarch64-linux-gnu/11]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  ignore line: [clang-17: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]]
+  ignore line: [ (in-process)]
+  ignore line: [ "/usr/local/bin/clang-17" -cc1 -triple aarch64-unknown-linux-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=non-leaf -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu generic -target-feature +neon -target-feature +v8a -target-abi aapcs -debugger-tuning=gdb -v -fcoverage-compilation-dir=/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp -resource-dir /usr/local/lib/clang/17 -dependency-file CMakeFiles/cmTC_88a79.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_88a79.dir/CMakeCCompilerABI.c.o -sys-header-deps -internal-isystem /usr/local/lib/clang/17/include -internal-isystem /usr/local/include -internal-isystem /usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdebug-compilation-dir=/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp -ferror-limit 19 -fno-signed-char -fgnuc-version=4.2.1 -target-feature +outline-atomics -target-feature -fmv -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_88a79.dir/CMakeCCompilerABI.c.o -x c /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c]
+  ignore line: [clang -cc1 version 17.0.6 based upon LLVM 17.0.6 default target x86_64-unknown-linux-gnu]
+  ignore line: [ignoring nonexistent directory "/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /usr/local/lib/clang/17/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)]
+  ignore line: [Linking C executable cmTC_88a79]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_88a79.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)]
+  ignore line: [/usr/local/bin/clang-17 -target aarch64-linux-gnu -fuse-ld=lld   -v CMakeFiles/cmTC_88a79.dir/CMakeCCompilerABI.c.o -o cmTC_88a79 ]
+  ignore line: [clang version 17.0.6 (https://github.com/llvm/llvm-project.git 6009708b4367171ccdbf4b5905cb6a803753fe18)]
+  ignore line: [Target: aarch64-unknown-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /usr/local/bin]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc-cross/aarch64-linux-gnu/11]
+  ignore line: [Selected GCC installation: /usr/lib/gcc-cross/aarch64-linux-gnu/11]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  link line: [ "/usr/local/bin/ld.lld" -pie -EL -z relro --hash-style=gnu --eh-frame-hdr -m aarch64linux -dynamic-linker /lib/ld-linux-aarch64.so.1 -o cmTC_88a79 /usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/Scrt1.o /usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/crti.o /usr/lib/gcc-cross/aarch64-linux-gnu/11/crtbeginS.o -L/usr/lib/gcc-cross/aarch64-linux-gnu/11 -L/usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../lib64 -L/lib/aarch64-linux-gnu -L/lib/../lib64 -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib64 -L/usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib -L/lib -L/usr/lib CMakeFiles/cmTC_88a79.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc-cross/aarch64-linux-gnu/11/crtendS.o /usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/crtn.o]
+    arg [/usr/local/bin/ld.lld] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-EL] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [aarch64linux] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib/ld-linux-aarch64.so.1] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_88a79] ==> ignore
+    arg [/usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/Scrt1.o] ==> obj [/usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/Scrt1.o]
+    arg [/usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/crti.o] ==> obj [/usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/crti.o]
+    arg [/usr/lib/gcc-cross/aarch64-linux-gnu/11/crtbeginS.o] ==> obj [/usr/lib/gcc-cross/aarch64-linux-gnu/11/crtbeginS.o]
+    arg [-L/usr/lib/gcc-cross/aarch64-linux-gnu/11] ==> dir [/usr/lib/gcc-cross/aarch64-linux-gnu/11]
+    arg [-L/usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../lib64] ==> dir [/usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../lib64]
+    arg [-L/lib/aarch64-linux-gnu] ==> dir [/lib/aarch64-linux-gnu]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/aarch64-linux-gnu] ==> dir [/usr/lib/aarch64-linux-gnu]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib] ==> dir [/usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib]
+    arg [-L/lib] ==> dir [/lib]
+    arg [-L/usr/lib] ==> dir [/usr/lib]
+    arg [CMakeFiles/cmTC_88a79.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [/usr/lib/gcc-cross/aarch64-linux-gnu/11/crtendS.o] ==> obj [/usr/lib/gcc-cross/aarch64-linux-gnu/11/crtendS.o]
+    arg [/usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/crtn.o] ==> obj [/usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/crtn.o]
+  collapse obj [/usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/Scrt1.o] ==> [/usr/aarch64-linux-gnu/lib/Scrt1.o]
+  collapse obj [/usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/crti.o] ==> [/usr/aarch64-linux-gnu/lib/crti.o]
+  collapse obj [/usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/crtn.o] ==> [/usr/aarch64-linux-gnu/lib/crtn.o]
+  collapse library dir [/usr/lib/gcc-cross/aarch64-linux-gnu/11] ==> [/usr/lib/gcc-cross/aarch64-linux-gnu/11]
+  collapse library dir [/usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../lib64] ==> [/usr/lib64]
+  collapse library dir [/lib/aarch64-linux-gnu] ==> [/lib/aarch64-linux-gnu]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/aarch64-linux-gnu] ==> [/usr/lib/aarch64-linux-gnu]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/usr/lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib] ==> [/usr/aarch64-linux-gnu/lib]
+  collapse library dir [/lib] ==> [/lib]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+  implicit objs: [/usr/aarch64-linux-gnu/lib/Scrt1.o;/usr/aarch64-linux-gnu/lib/crti.o;/usr/lib/gcc-cross/aarch64-linux-gnu/11/crtbeginS.o;/usr/lib/gcc-cross/aarch64-linux-gnu/11/crtendS.o;/usr/aarch64-linux-gnu/lib/crtn.o]
+  implicit dirs: [/usr/lib/gcc-cross/aarch64-linux-gnu/11;/usr/lib64;/lib/aarch64-linux-gnu;/lib64;/usr/lib/aarch64-linux-gnu;/usr/aarch64-linux-gnu/lib;/lib;/usr/lib]
+  implicit fwks: []
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_be4d3/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_be4d3.dir/build.make CMakeFiles/cmTC_be4d3.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_be4d3.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/clang++-17   -target aarch64-linux-gnu -fuse-ld=lld    -v -MD -MT CMakeFiles/cmTC_be4d3.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_be4d3.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_be4d3.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp
+Ubuntu clang version 17.0.6 (++20231209124227+6009708b4367-1~exp1~20231209124336.77)
+Target: aarch64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /usr/bin
+Found candidate GCC installation: /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11
+Selected GCC installation: /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11
+Candidate multilib: .;@m64
+Selected multilib: .;@m64
+clang++-17: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+ (in-process)
+ "/usr/lib/llvm-17/bin/clang" -cc1 -triple aarch64-unknown-linux-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=non-leaf -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu generic -target-feature +neon -target-feature +v8a -target-abi aapcs -debugger-tuning=gdb -v -fcoverage-compilation-dir=/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp -resource-dir /usr/lib/llvm-17/lib/clang/17 -dependency-file CMakeFiles/cmTC_be4d3.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_be4d3.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include/c++/11 -internal-isystem /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include/c++/11/aarch64-linux-gnu -internal-isystem /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include/c++/11/backward -internal-isystem /usr/lib/llvm-17/lib/clang/17/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -fdebug-compilation-dir=/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp -ferror-limit 19 -fno-signed-char -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -target-feature +outline-atomics -target-feature -fmv -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_be4d3.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp
+clang -cc1 version 17.0.6 based upon LLVM 17.0.6 default target x86_64-pc-linux-gnu
+ignoring nonexistent directory "/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include/c++/11
+ /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include/c++/11/aarch64-linux-gnu
+ /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include/c++/11/backward
+ /usr/lib/llvm-17/lib/clang/17/include
+ /usr/local/include
+ /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include
+ /usr/include
+End of search list.
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking CXX executable cmTC_be4d3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_be4d3.dir/link.txt --verbose=1
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/usr/bin/clang++-17 -target aarch64-linux-gnu -fuse-ld=lld   -v CMakeFiles/cmTC_be4d3.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_be4d3 
+Ubuntu clang version 17.0.6 (++20231209124227+6009708b4367-1~exp1~20231209124336.77)
+Target: aarch64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /usr/bin
+Found candidate GCC installation: /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11
+Selected GCC installation: /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11
+Candidate multilib: .;@m64
+Selected multilib: .;@m64
+ "/usr/lib/llvm-17/bin/ld.lld" -pie -EL -z relro --hash-style=gnu --build-id --eh-frame-hdr -m aarch64linux -dynamic-linker /lib/ld-linux-aarch64.so.1 -o cmTC_be4d3 /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/Scrt1.o /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/crti.o /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/crtbeginS.o -L/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11 -L/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../lib64 -L/lib/aarch64-linux-gnu -L/lib/../lib64 -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib64 -L/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib -L/lib -L/usr/lib CMakeFiles/cmTC_be4d3.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/crtendS.o /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/crtn.o
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+
+
+
+Parsed CXX implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include/c++/11]
+    add: [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include/c++/11/aarch64-linux-gnu]
+    add: [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include/c++/11/backward]
+    add: [/usr/lib/llvm-17/lib/clang/17/include]
+    add: [/usr/local/include]
+    add: [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include/c++/11] ==> [/usr/aarch64-linux-gnu/include/c++/11]
+  collapse include dir [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include/c++/11/aarch64-linux-gnu] ==> [/usr/aarch64-linux-gnu/include/c++/11/aarch64-linux-gnu]
+  collapse include dir [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include/c++/11/backward] ==> [/usr/aarch64-linux-gnu/include/c++/11/backward]
+  collapse include dir [/usr/lib/llvm-17/lib/clang/17/include] ==> [/usr/lib/llvm-17/lib/clang/17/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include] ==> [/usr/aarch64-linux-gnu/include]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/usr/aarch64-linux-gnu/include/c++/11;/usr/aarch64-linux-gnu/include/c++/11/aarch64-linux-gnu;/usr/aarch64-linux-gnu/include/c++/11/backward;/usr/lib/llvm-17/lib/clang/17/include;/usr/local/include;/usr/aarch64-linux-gnu/include;/usr/include]
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld\.lld-17|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_be4d3/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_be4d3.dir/build.make CMakeFiles/cmTC_be4d3.dir/build]
+  ignore line: [gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)]
+  ignore line: [Building CXX object CMakeFiles/cmTC_be4d3.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/clang++-17   -target aarch64-linux-gnu -fuse-ld=lld    -v -MD -MT CMakeFiles/cmTC_be4d3.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_be4d3.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_be4d3.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Ubuntu clang version 17.0.6 (++20231209124227+6009708b4367-1~exp1~20231209124336.77)]
+  ignore line: [Target: aarch64-unknown-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /usr/bin]
+  ignore line: [Found candidate GCC installation: /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11]
+  ignore line: [Selected GCC installation: /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  ignore line: [clang++-17: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]]
+  ignore line: [ (in-process)]
+  ignore line: [ "/usr/lib/llvm-17/bin/clang" -cc1 -triple aarch64-unknown-linux-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=non-leaf -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu generic -target-feature +neon -target-feature +v8a -target-abi aapcs -debugger-tuning=gdb -v -fcoverage-compilation-dir=/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp -resource-dir /usr/lib/llvm-17/lib/clang/17 -dependency-file CMakeFiles/cmTC_be4d3.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_be4d3.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include/c++/11 -internal-isystem /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include/c++/11/aarch64-linux-gnu -internal-isystem /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include/c++/11/backward -internal-isystem /usr/lib/llvm-17/lib/clang/17/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -fdebug-compilation-dir=/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp -ferror-limit 19 -fno-signed-char -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -target-feature +outline-atomics -target-feature -fmv -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_be4d3.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [clang -cc1 version 17.0.6 based upon LLVM 17.0.6 default target x86_64-pc-linux-gnu]
+  ignore line: [ignoring nonexistent directory "/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include/c++/11]
+  ignore line: [ /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include/c++/11/aarch64-linux-gnu]
+  ignore line: [ /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include/c++/11/backward]
+  ignore line: [ /usr/lib/llvm-17/lib/clang/17/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/include]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)]
+  ignore line: [Linking CXX executable cmTC_be4d3]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_be4d3.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)]
+  ignore line: [/usr/bin/clang++-17 -target aarch64-linux-gnu -fuse-ld=lld   -v CMakeFiles/cmTC_be4d3.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_be4d3 ]
+  ignore line: [Ubuntu clang version 17.0.6 (++20231209124227+6009708b4367-1~exp1~20231209124336.77)]
+  ignore line: [Target: aarch64-unknown-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /usr/bin]
+  ignore line: [Found candidate GCC installation: /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11]
+  ignore line: [Selected GCC installation: /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  link line: [ "/usr/lib/llvm-17/bin/ld.lld" -pie -EL -z relro --hash-style=gnu --build-id --eh-frame-hdr -m aarch64linux -dynamic-linker /lib/ld-linux-aarch64.so.1 -o cmTC_be4d3 /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/Scrt1.o /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/crti.o /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/crtbeginS.o -L/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11 -L/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../lib64 -L/lib/aarch64-linux-gnu -L/lib/../lib64 -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib64 -L/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib -L/lib -L/usr/lib CMakeFiles/cmTC_be4d3.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/crtendS.o /usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/crtn.o]
+    arg [/usr/lib/llvm-17/bin/ld.lld] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-EL] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [aarch64linux] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib/ld-linux-aarch64.so.1] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_be4d3] ==> ignore
+    arg [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/Scrt1.o] ==> obj [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/Scrt1.o]
+    arg [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/crti.o] ==> obj [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/crti.o]
+    arg [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/crtbeginS.o] ==> obj [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/crtbeginS.o]
+    arg [-L/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11] ==> dir [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11]
+    arg [-L/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../lib64] ==> dir [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../lib64]
+    arg [-L/lib/aarch64-linux-gnu] ==> dir [/lib/aarch64-linux-gnu]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/aarch64-linux-gnu] ==> dir [/usr/lib/aarch64-linux-gnu]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib] ==> dir [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib]
+    arg [-L/lib] ==> dir [/lib]
+    arg [-L/usr/lib] ==> dir [/usr/lib]
+    arg [CMakeFiles/cmTC_be4d3.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/crtendS.o] ==> obj [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/crtendS.o]
+    arg [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/crtn.o] ==> obj [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/crtn.o]
+  collapse obj [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/Scrt1.o] ==> [/usr/aarch64-linux-gnu/lib/Scrt1.o]
+  collapse obj [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/crti.o] ==> [/usr/aarch64-linux-gnu/lib/crti.o]
+  collapse obj [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/crtbeginS.o] ==> [/usr/lib/gcc-cross/aarch64-linux-gnu/11/crtbeginS.o]
+  collapse obj [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/crtendS.o] ==> [/usr/lib/gcc-cross/aarch64-linux-gnu/11/crtendS.o]
+  collapse obj [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib/crtn.o] ==> [/usr/aarch64-linux-gnu/lib/crtn.o]
+  collapse library dir [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11] ==> [/usr/lib/gcc-cross/aarch64-linux-gnu/11]
+  collapse library dir [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../lib64] ==> [/usr/lib64]
+  collapse library dir [/lib/aarch64-linux-gnu] ==> [/lib/aarch64-linux-gnu]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/aarch64-linux-gnu] ==> [/usr/lib/aarch64-linux-gnu]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/usr/bin/../lib/gcc-cross/aarch64-linux-gnu/11/../../../../aarch64-linux-gnu/lib] ==> [/usr/aarch64-linux-gnu/lib]
+  collapse library dir [/lib] ==> [/lib]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+  implicit objs: [/usr/aarch64-linux-gnu/lib/Scrt1.o;/usr/aarch64-linux-gnu/lib/crti.o;/usr/lib/gcc-cross/aarch64-linux-gnu/11/crtbeginS.o;/usr/lib/gcc-cross/aarch64-linux-gnu/11/crtendS.o;/usr/aarch64-linux-gnu/lib/crtn.o]
+  implicit dirs: [/usr/lib/gcc-cross/aarch64-linux-gnu/11;/usr/lib64;/lib/aarch64-linux-gnu;/lib64;/usr/lib/aarch64-linux-gnu;/usr/aarch64-linux-gnu/lib;/lib;/usr/lib]
+  implicit fwks: []
+
+
+Determining if the include file histedit.h exists passed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_6f1d5/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_6f1d5.dir/build.make CMakeFiles/cmTC_6f1d5.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_6f1d5.dir/CheckIncludeFile.c.o
+/usr/local/bin/clang-17   -target aarch64-linux-gnu -fuse-ld=lld -g  -MD -MT CMakeFiles/cmTC_6f1d5.dir/CheckIncludeFile.c.o -MF CMakeFiles/cmTC_6f1d5.dir/CheckIncludeFile.c.o.d -o CMakeFiles/cmTC_6f1d5.dir/CheckIncludeFile.c.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+clang-17: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking C executable cmTC_6f1d5
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6f1d5.dir/link.txt --verbose=1
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/usr/local/bin/clang-17 -target aarch64-linux-gnu -fuse-ld=lld -g  CMakeFiles/cmTC_6f1d5.dir/CheckIncludeFile.c.o -o cmTC_6f1d5 
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+
+
+
+Performing C++ SOURCE FILE Test LLVM_LIBSTDCXX_MIN succeeded with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_36a89/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_36a89.dir/build.make CMakeFiles/cmTC_36a89.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_36a89.dir/src.cxx.o
+/usr/bin/clang++-17 -DLLVM_LIBSTDCXX_MIN  -target aarch64-linux-gnu -fuse-ld=lld -g  -std=c++0x -std=gnu++17 -MD -MT CMakeFiles/cmTC_36a89.dir/src.cxx.o -MF CMakeFiles/cmTC_36a89.dir/src.cxx.o.d -o CMakeFiles/cmTC_36a89.dir/src.cxx.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.cxx
+clang++-17: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking CXX executable cmTC_36a89
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_36a89.dir/link.txt --verbose=1
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/usr/bin/clang++-17 -target aarch64-linux-gnu -fuse-ld=lld -g  -std=c++0x CMakeFiles/cmTC_36a89.dir/src.cxx.o -o cmTC_36a89 
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+
+#include <iosfwd>
+#if defined(__GLIBCXX__)
+#if !defined(_GLIBCXX_RELEASE) || _GLIBCXX_RELEASE < 7
+#error Unsupported libstdc++ version
+#endif
+#endif
+int main() { return 0; }
+
+Performing C++ SOURCE FILE Test LLVM_LIBSTDCXX_SOFT_ERROR succeeded with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_408f5/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_408f5.dir/build.make CMakeFiles/cmTC_408f5.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_408f5.dir/src.cxx.o
+/usr/bin/clang++-17 -DLLVM_LIBSTDCXX_SOFT_ERROR  -target aarch64-linux-gnu -fuse-ld=lld -g  -std=c++0x -std=gnu++17 -MD -MT CMakeFiles/cmTC_408f5.dir/src.cxx.o -MF CMakeFiles/cmTC_408f5.dir/src.cxx.o.d -o CMakeFiles/cmTC_408f5.dir/src.cxx.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.cxx
+clang++-17: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking CXX executable cmTC_408f5
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_408f5.dir/link.txt --verbose=1
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/usr/bin/clang++-17 -target aarch64-linux-gnu -fuse-ld=lld -g  -std=c++0x CMakeFiles/cmTC_408f5.dir/src.cxx.o -o cmTC_408f5 
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+
+#include <iosfwd>
+#if defined(__GLIBCXX__)
+#if !defined(_GLIBCXX_RELEASE) || _GLIBCXX_RELEASE < 7
+#error Unsupported libstdc++ version
+#endif
+#endif
+int main() { return 0; }
+
+Performing C++ SOURCE FILE Test SUPPORTS_FVISIBILITY_INLINES_HIDDEN_FLAG succeeded with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_8a15b/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_8a15b.dir/build.make CMakeFiles/cmTC_8a15b.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_8a15b.dir/src.cxx.o
+/usr/bin/clang++-17 -DSUPPORTS_FVISIBILITY_INLINES_HIDDEN_FLAG  -target aarch64-linux-gnu -fuse-ld=lld -g    -fvisibility-inlines-hidden -std=gnu++17 -MD -MT CMakeFiles/cmTC_8a15b.dir/src.cxx.o -MF CMakeFiles/cmTC_8a15b.dir/src.cxx.o.d -o CMakeFiles/cmTC_8a15b.dir/src.cxx.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.cxx
+clang++-17: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking CXX executable cmTC_8a15b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8a15b.dir/link.txt --verbose=1
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/usr/bin/clang++-17 -target aarch64-linux-gnu -fuse-ld=lld -g  CMakeFiles/cmTC_8a15b.dir/src.cxx.o -o cmTC_8a15b 
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test CXX_SUPPORTS_MISSING_FIELD_INITIALIZERS_FLAG succeeded with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_e92b3/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_e92b3.dir/build.make CMakeFiles/cmTC_e92b3.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_e92b3.dir/src.cxx.o
+/usr/bin/clang++-17 -DCXX_SUPPORTS_MISSING_FIELD_INITIALIZERS_FLAG  -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual    -Wmissing-field-initializers -std=gnu++17 -MD -MT CMakeFiles/cmTC_e92b3.dir/src.cxx.o -MF CMakeFiles/cmTC_e92b3.dir/src.cxx.o.d -o CMakeFiles/cmTC_e92b3.dir/src.cxx.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.cxx
+clang++-17: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking CXX executable cmTC_e92b3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e92b3.dir/link.txt --verbose=1
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/usr/bin/clang++-17 -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual  CMakeFiles/cmTC_e92b3.dir/src.cxx.o -o cmTC_e92b3 
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test CXX_SUPPORTS_NOEXCEPT_TYPE_FLAG succeeded with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_8a8be/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_8a8be.dir/build.make CMakeFiles/cmTC_8a8be.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_8a8be.dir/src.cxx.o
+/usr/bin/clang++-17 -DCXX_SUPPORTS_NOEXCEPT_TYPE_FLAG  -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers    -Wnoexcept-type -std=gnu++17 -MD -MT CMakeFiles/cmTC_8a8be.dir/src.cxx.o -MF CMakeFiles/cmTC_8a8be.dir/src.cxx.o.d -o CMakeFiles/cmTC_8a8be.dir/src.cxx.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.cxx
+clang++-17: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking CXX executable cmTC_8a8be
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8a8be.dir/link.txt --verbose=1
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/usr/bin/clang++-17 -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers  CMakeFiles/cmTC_8a8be.dir/src.cxx.o -o cmTC_8a8be 
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test CXX_WONT_WARN_ON_FINAL_NONVIRTUALDTOR succeeded with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_b6f18/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_b6f18.dir/build.make CMakeFiles/cmTC_b6f18.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_b6f18.dir/src.cxx.o
+/usr/bin/clang++-17 -DCXX_WONT_WARN_ON_FINAL_NONVIRTUALDTOR  -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type  -Werror=non-virtual-dtor -std=gnu++17 -MD -MT CMakeFiles/cmTC_b6f18.dir/src.cxx.o -MF CMakeFiles/cmTC_b6f18.dir/src.cxx.o.d -o CMakeFiles/cmTC_b6f18.dir/src.cxx.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.cxx
+clang++-17: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking CXX executable cmTC_b6f18
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b6f18.dir/link.txt --verbose=1
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/usr/bin/clang++-17 -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type  -Werror=non-virtual-dtor CMakeFiles/cmTC_b6f18.dir/src.cxx.o -o cmTC_b6f18 
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+class f {};
+                             class base {friend f; public: virtual void anchor();protected: ~base();};
+                             int main() { return 0; }
+Performing C++ SOURCE FILE Test CXX_SUPPORTS_SUGGEST_OVERRIDE_FLAG succeeded with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_1026b/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_1026b.dir/build.make CMakeFiles/cmTC_1026b.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_1026b.dir/src.cxx.o
+/usr/bin/clang++-17 -DCXX_SUPPORTS_SUGGEST_OVERRIDE_FLAG  -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor    -Wsuggest-override -std=gnu++17 -MD -MT CMakeFiles/cmTC_1026b.dir/src.cxx.o -MF CMakeFiles/cmTC_1026b.dir/src.cxx.o.d -o CMakeFiles/cmTC_1026b.dir/src.cxx.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.cxx
+clang++-17: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking CXX executable cmTC_1026b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1026b.dir/link.txt --verbose=1
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/usr/bin/clang++-17 -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor  CMakeFiles/cmTC_1026b.dir/src.cxx.o -o cmTC_1026b 
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test CXX_WSUGGEST_OVERRIDE_ALLOWS_ONLY_FINAL succeeded with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_66292/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_66292.dir/build.make CMakeFiles/cmTC_66292.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_66292.dir/src.cxx.o
+/usr/bin/clang++-17 -DCXX_WSUGGEST_OVERRIDE_ALLOWS_ONLY_FINAL  -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor  -Werror=suggest-override -std=gnu++17 -MD -MT CMakeFiles/cmTC_66292.dir/src.cxx.o -MF CMakeFiles/cmTC_66292.dir/src.cxx.o.d -o CMakeFiles/cmTC_66292.dir/src.cxx.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.cxx
+clang++-17: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.cxx:1:7: warning: 'base' has virtual functions but non-virtual destructor [-Wnon-virtual-dtor]
+    1 | class base {public: virtual void anchor();};
+      |       ^
+/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.cxx:2:38: warning: 'derived' has virtual functions but non-virtual destructor [-Wnon-virtual-dtor]
+    2 |                                class derived : base {public: void anchor() final;};
+      |                                      ^
+2 warnings generated.
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking CXX executable cmTC_66292
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_66292.dir/link.txt --verbose=1
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/usr/bin/clang++-17 -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor  -Werror=suggest-override CMakeFiles/cmTC_66292.dir/src.cxx.o -o cmTC_66292 
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+class base {public: virtual void anchor();};
+                               class derived : base {public: void anchor() final;};
+                               int main() { return 0; }

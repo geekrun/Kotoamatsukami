@@ -1,0 +1,439 @@
+Performing C SOURCE FILE Test C_SUPPORTS_FPIC failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_bc5c6/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_bc5c6.dir/build.make CMakeFiles/cmTC_bc5c6.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_bc5c6.dir/src.c.o
+/usr/local/bin/clang-17 -DC_SUPPORTS_FPIC  -target aarch64-linux-gnu -fuse-ld=lld -g    -Werror -fPIC -MD -MT CMakeFiles/cmTC_bc5c6.dir/src.c.o -MF CMakeFiles/cmTC_bc5c6.dir/src.c.o.d -o CMakeFiles/cmTC_bc5c6.dir/src.c.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.c
+clang-17: error: argument unused during compilation: '-fuse-ld=lld' [-Werror,-Wunused-command-line-argument]
+gmake[1]: *** [CMakeFiles/cmTC_bc5c6.dir/build.make:79: CMakeFiles/cmTC_bc5c6.dir/src.c.o] Error 1
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_bc5c6/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C++ SOURCE FILE Test CXX_SUPPORTS_FPIC failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_5f3ad/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_5f3ad.dir/build.make CMakeFiles/cmTC_5f3ad.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_5f3ad.dir/src.cxx.o
+/usr/bin/clang++-17 -DCXX_SUPPORTS_FPIC  -target aarch64-linux-gnu -fuse-ld=lld -g    -Werror -fPIC -std=gnu++17 -MD -MT CMakeFiles/cmTC_5f3ad.dir/src.cxx.o -MF CMakeFiles/cmTC_5f3ad.dir/src.cxx.o.d -o CMakeFiles/cmTC_5f3ad.dir/src.cxx.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.cxx
+clang++-17: error: argument unused during compilation: '-fuse-ld=lld' [-Werror,-Wunused-command-line-argument]
+gmake[1]: *** [CMakeFiles/cmTC_5f3ad.dir/build.make:79: CMakeFiles/cmTC_5f3ad.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_5f3ad/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C SOURCE FILE Test C_SUPPORTS_FNO_SEMANTIC_INTERPOSITION failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_18448/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_18448.dir/build.make CMakeFiles/cmTC_18448.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_18448.dir/src.c.o
+/usr/local/bin/clang-17 -DC_SUPPORTS_FNO_SEMANTIC_INTERPOSITION  -target aarch64-linux-gnu -fuse-ld=lld -g    -Werror -fno-semantic-interposition -MD -MT CMakeFiles/cmTC_18448.dir/src.c.o -MF CMakeFiles/cmTC_18448.dir/src.c.o.d -o CMakeFiles/cmTC_18448.dir/src.c.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.c
+clang-17: error: argument unused during compilation: '-fuse-ld=lld' [-Werror,-Wunused-command-line-argument]
+gmake[1]: *** [CMakeFiles/cmTC_18448.dir/build.make:79: CMakeFiles/cmTC_18448.dir/src.c.o] Error 1
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_18448/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C++ SOURCE FILE Test CXX_SUPPORTS_FNO_SEMANTIC_INTERPOSITION failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_1a831/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_1a831.dir/build.make CMakeFiles/cmTC_1a831.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_1a831.dir/src.cxx.o
+/usr/bin/clang++-17 -DCXX_SUPPORTS_FNO_SEMANTIC_INTERPOSITION  -target aarch64-linux-gnu -fuse-ld=lld -g    -Werror -fno-semantic-interposition -std=gnu++17 -MD -MT CMakeFiles/cmTC_1a831.dir/src.cxx.o -MF CMakeFiles/cmTC_1a831.dir/src.cxx.o.d -o CMakeFiles/cmTC_1a831.dir/src.cxx.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.cxx
+clang++-17: error: argument unused during compilation: '-fuse-ld=lld' [-Werror,-Wunused-command-line-argument]
+gmake[1]: *** [CMakeFiles/cmTC_1a831.dir/build.make:79: CMakeFiles/cmTC_1a831.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_1a831/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C SOURCE FILE Test C_SUPPORTS_WERROR_DATE_TIME failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_b9c29/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_b9c29.dir/build.make CMakeFiles/cmTC_b9c29.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_b9c29.dir/src.c.o
+/usr/local/bin/clang-17 -DC_SUPPORTS_WERROR_DATE_TIME  -target aarch64-linux-gnu -fuse-ld=lld -g    -Werror -Werror=date-time -MD -MT CMakeFiles/cmTC_b9c29.dir/src.c.o -MF CMakeFiles/cmTC_b9c29.dir/src.c.o.d -o CMakeFiles/cmTC_b9c29.dir/src.c.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.c
+clang-17: error: argument unused during compilation: '-fuse-ld=lld' [-Werror,-Wunused-command-line-argument]
+gmake[1]: *** [CMakeFiles/cmTC_b9c29.dir/build.make:79: CMakeFiles/cmTC_b9c29.dir/src.c.o] Error 1
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_b9c29/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C++ SOURCE FILE Test CXX_SUPPORTS_WERROR_DATE_TIME failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_3b4e5/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_3b4e5.dir/build.make CMakeFiles/cmTC_3b4e5.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_3b4e5.dir/src.cxx.o
+/usr/bin/clang++-17 -DCXX_SUPPORTS_WERROR_DATE_TIME  -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden    -Werror -Werror=date-time -std=gnu++17 -MD -MT CMakeFiles/cmTC_3b4e5.dir/src.cxx.o -MF CMakeFiles/cmTC_3b4e5.dir/src.cxx.o.d -o CMakeFiles/cmTC_3b4e5.dir/src.cxx.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.cxx
+clang++-17: error: argument unused during compilation: '-fuse-ld=lld' [-Werror,-Wunused-command-line-argument]
+gmake[1]: *** [CMakeFiles/cmTC_3b4e5.dir/build.make:79: CMakeFiles/cmTC_3b4e5.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_3b4e5/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C SOURCE FILE Test C_SUPPORTS_WERROR_UNGUARDED_AVAILABILITY_NEW failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_16c18/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_16c18.dir/build.make CMakeFiles/cmTC_16c18.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_16c18.dir/src.c.o
+/usr/local/bin/clang-17 -DC_SUPPORTS_WERROR_UNGUARDED_AVAILABILITY_NEW  -target aarch64-linux-gnu -fuse-ld=lld -g    -Werror -Werror=unguarded-availability-new -MD -MT CMakeFiles/cmTC_16c18.dir/src.c.o -MF CMakeFiles/cmTC_16c18.dir/src.c.o.d -o CMakeFiles/cmTC_16c18.dir/src.c.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.c
+clang-17: error: argument unused during compilation: '-fuse-ld=lld' [-Werror,-Wunused-command-line-argument]
+gmake[1]: *** [CMakeFiles/cmTC_16c18.dir/build.make:79: CMakeFiles/cmTC_16c18.dir/src.c.o] Error 1
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_16c18/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C++ SOURCE FILE Test CXX_SUPPORTS_WERROR_UNGUARDED_AVAILABILITY_NEW failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_3b6e4/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_3b6e4.dir/build.make CMakeFiles/cmTC_3b6e4.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_3b6e4.dir/src.cxx.o
+/usr/bin/clang++-17 -DCXX_SUPPORTS_WERROR_UNGUARDED_AVAILABILITY_NEW  -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden    -Werror -Werror=unguarded-availability-new -std=gnu++17 -MD -MT CMakeFiles/cmTC_3b6e4.dir/src.cxx.o -MF CMakeFiles/cmTC_3b6e4.dir/src.cxx.o.d -o CMakeFiles/cmTC_3b6e4.dir/src.cxx.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.cxx
+clang++-17: error: argument unused during compilation: '-fuse-ld=lld' [-Werror,-Wunused-command-line-argument]
+gmake[1]: *** [CMakeFiles/cmTC_3b6e4.dir/build.make:79: CMakeFiles/cmTC_3b6e4.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_3b6e4/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C SOURCE FILE Test C_SUPPORTS_CMAKE_CXX_FLAGS failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_12ccd/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_12ccd.dir/build.make CMakeFiles/cmTC_12ccd.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_12ccd.dir/src.c.o
+/usr/local/bin/clang-17 -DC_SUPPORTS_CMAKE_CXX_FLAGS  -target aarch64-linux-gnu -fuse-ld=lld -g    -Werror -fno-lifetime-dse -MD -MT CMakeFiles/cmTC_12ccd.dir/src.c.o -MF CMakeFiles/cmTC_12ccd.dir/src.c.o.d -o CMakeFiles/cmTC_12ccd.dir/src.c.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.c
+clang-17: error: unknown argument: '-fno-lifetime-dse'
+gmake[1]: *** [CMakeFiles/cmTC_12ccd.dir/build.make:79: CMakeFiles/cmTC_12ccd.dir/src.c.o] Error 1
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_12ccd/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C++ SOURCE FILE Test CXX_SUPPORTS_CMAKE_CXX_FLAGS failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_8632f/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_8632f.dir/build.make CMakeFiles/cmTC_8632f.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_8632f.dir/src.cxx.o
+/usr/bin/clang++-17 -DCXX_SUPPORTS_CMAKE_CXX_FLAGS  -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden    -Werror -fno-lifetime-dse -std=gnu++17 -MD -MT CMakeFiles/cmTC_8632f.dir/src.cxx.o -MF CMakeFiles/cmTC_8632f.dir/src.cxx.o.d -o CMakeFiles/cmTC_8632f.dir/src.cxx.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.cxx
+clang++-17: error: unknown argument: '-fno-lifetime-dse'
+gmake[1]: *** [CMakeFiles/cmTC_8632f.dir/build.make:79: CMakeFiles/cmTC_8632f.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_8632f/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C SOURCE FILE Test C_SUPPORTS_IMPLICIT_FALLTHROUGH_FLAG failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_9e1f6/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_9e1f6.dir/build.make CMakeFiles/cmTC_9e1f6.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_9e1f6.dir/src.c.o
+/usr/local/bin/clang-17 -DC_SUPPORTS_IMPLICIT_FALLTHROUGH_FLAG  -target aarch64-linux-gnu -fuse-ld=lld -g -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers    -Werror -Wimplicit-fallthrough -MD -MT CMakeFiles/cmTC_9e1f6.dir/src.c.o -MF CMakeFiles/cmTC_9e1f6.dir/src.c.o.d -o CMakeFiles/cmTC_9e1f6.dir/src.c.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.c
+clang-17: error: argument unused during compilation: '-fuse-ld=lld' [-Werror,-Wunused-command-line-argument]
+gmake[1]: *** [CMakeFiles/cmTC_9e1f6.dir/build.make:79: CMakeFiles/cmTC_9e1f6.dir/src.c.o] Error 1
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_9e1f6/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C++ SOURCE FILE Test CXX_SUPPORTS_IMPLICIT_FALLTHROUGH_FLAG failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_bb6ab/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_bb6ab.dir/build.make CMakeFiles/cmTC_bb6ab.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_bb6ab.dir/src.cxx.o
+/usr/bin/clang++-17 -DCXX_SUPPORTS_IMPLICIT_FALLTHROUGH_FLAG  -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers    -Werror -Wimplicit-fallthrough -std=gnu++17 -MD -MT CMakeFiles/cmTC_bb6ab.dir/src.cxx.o -MF CMakeFiles/cmTC_bb6ab.dir/src.cxx.o.d -o CMakeFiles/cmTC_bb6ab.dir/src.cxx.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.cxx
+clang++-17: error: argument unused during compilation: '-fuse-ld=lld' [-Werror,-Wunused-command-line-argument]
+gmake[1]: *** [CMakeFiles/cmTC_bb6ab.dir/build.make:79: CMakeFiles/cmTC_bb6ab.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_bb6ab/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C SOURCE FILE Test C_SUPPORTS_COVERED_SWITCH_DEFAULT_FLAG failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_7ef1b/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_7ef1b.dir/build.make CMakeFiles/cmTC_7ef1b.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_7ef1b.dir/src.c.o
+/usr/local/bin/clang-17 -DC_SUPPORTS_COVERED_SWITCH_DEFAULT_FLAG  -target aarch64-linux-gnu -fuse-ld=lld -g -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers    -Werror -Wcovered-switch-default -MD -MT CMakeFiles/cmTC_7ef1b.dir/src.c.o -MF CMakeFiles/cmTC_7ef1b.dir/src.c.o.d -o CMakeFiles/cmTC_7ef1b.dir/src.c.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.c
+clang-17: error: argument unused during compilation: '-fuse-ld=lld' [-Werror,-Wunused-command-line-argument]
+gmake[1]: *** [CMakeFiles/cmTC_7ef1b.dir/build.make:79: CMakeFiles/cmTC_7ef1b.dir/src.c.o] Error 1
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_7ef1b/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C++ SOURCE FILE Test CXX_SUPPORTS_COVERED_SWITCH_DEFAULT_FLAG failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_66bab/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_66bab.dir/build.make CMakeFiles/cmTC_66bab.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_66bab.dir/src.cxx.o
+/usr/bin/clang++-17 -DCXX_SUPPORTS_COVERED_SWITCH_DEFAULT_FLAG  -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers    -Werror -Wcovered-switch-default -std=gnu++17 -MD -MT CMakeFiles/cmTC_66bab.dir/src.cxx.o -MF CMakeFiles/cmTC_66bab.dir/src.cxx.o.d -o CMakeFiles/cmTC_66bab.dir/src.cxx.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.cxx
+clang++-17: error: argument unused during compilation: '-fuse-ld=lld' [-Werror,-Wunused-command-line-argument]
+gmake[1]: *** [CMakeFiles/cmTC_66bab.dir/build.make:79: CMakeFiles/cmTC_66bab.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_66bab/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test CXX_SUPPORTS_CLASS_MEMACCESS_FLAG failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_4e514/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_4e514.dir/build.make CMakeFiles/cmTC_4e514.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_4e514.dir/src.cxx.o
+/usr/bin/clang++-17 -DCXX_SUPPORTS_CLASS_MEMACCESS_FLAG  -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers    -Wclass-memaccess -std=gnu++17 -MD -MT CMakeFiles/cmTC_4e514.dir/src.cxx.o -MF CMakeFiles/cmTC_4e514.dir/src.cxx.o.d -o CMakeFiles/cmTC_4e514.dir/src.cxx.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.cxx
+clang++-17: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+warning: unknown warning option '-Wclass-memaccess'; did you mean '-Wclass-varargs'? [-Wunknown-warning-option]
+1 warning generated.
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking CXX executable cmTC_4e514
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4e514.dir/link.txt --verbose=1
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/usr/bin/clang++-17 -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers  CMakeFiles/cmTC_4e514.dir/src.cxx.o -o cmTC_4e514 
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C SOURCE FILE Test C_WCOMMENT_ALLOWS_LINE_WRAP failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_8c646/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_8c646.dir/build.make CMakeFiles/cmTC_8c646.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_8c646.dir/src.c.o
+/usr/local/bin/clang-17 -DC_WCOMMENT_ALLOWS_LINE_WRAP  -target aarch64-linux-gnu -fuse-ld=lld -g -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers  -Werror -Wcomment -MD -MT CMakeFiles/cmTC_8c646.dir/src.c.o -MF CMakeFiles/cmTC_8c646.dir/src.c.o.d -o CMakeFiles/cmTC_8c646.dir/src.c.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.c
+clang-17: error: argument unused during compilation: '-fuse-ld=lld' [-Werror,-Wunused-command-line-argument]
+gmake[1]: *** [CMakeFiles/cmTC_8c646.dir/build.make:79: CMakeFiles/cmTC_8c646.dir/src.c.o] Error 1
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_8c646/fast] Error 2
+
+
+Source file was:
+// \
+//
+int main(void) {return 0;}
+Performing C SOURCE FILE Test C_SUPPORTS_STRING_CONVERSION_FLAG failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_23fb4/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_23fb4.dir/build.make CMakeFiles/cmTC_23fb4.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_23fb4.dir/src.c.o
+/usr/local/bin/clang-17 -DC_SUPPORTS_STRING_CONVERSION_FLAG  -target aarch64-linux-gnu -fuse-ld=lld -g -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-comment    -Werror -Wstring-conversion -MD -MT CMakeFiles/cmTC_23fb4.dir/src.c.o -MF CMakeFiles/cmTC_23fb4.dir/src.c.o.d -o CMakeFiles/cmTC_23fb4.dir/src.c.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.c
+clang-17: error: argument unused during compilation: '-fuse-ld=lld' [-Werror,-Wunused-command-line-argument]
+gmake[1]: *** [CMakeFiles/cmTC_23fb4.dir/build.make:79: CMakeFiles/cmTC_23fb4.dir/src.c.o] Error 1
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_23fb4/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C++ SOURCE FILE Test CXX_SUPPORTS_STRING_CONVERSION_FLAG failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_c9db3/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_c9db3.dir/build.make CMakeFiles/cmTC_c9db3.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_c9db3.dir/src.cxx.o
+/usr/bin/clang++-17 -DCXX_SUPPORTS_STRING_CONVERSION_FLAG  -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wno-comment    -Werror -Wstring-conversion -std=gnu++17 -MD -MT CMakeFiles/cmTC_c9db3.dir/src.cxx.o -MF CMakeFiles/cmTC_c9db3.dir/src.cxx.o.d -o CMakeFiles/cmTC_c9db3.dir/src.cxx.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.cxx
+clang++-17: error: argument unused during compilation: '-fuse-ld=lld' [-Werror,-Wunused-command-line-argument]
+gmake[1]: *** [CMakeFiles/cmTC_c9db3.dir/build.make:79: CMakeFiles/cmTC_c9db3.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_c9db3/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C SOURCE FILE Test C_SUPPORTS_MISLEADING_INDENTATION_FLAG failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_5eabd/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_5eabd.dir/build.make CMakeFiles/cmTC_5eabd.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_5eabd.dir/src.c.o
+/usr/local/bin/clang-17 -DC_SUPPORTS_MISLEADING_INDENTATION_FLAG  -target aarch64-linux-gnu -fuse-ld=lld -g -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-comment    -Werror -Wmisleading-indentation -MD -MT CMakeFiles/cmTC_5eabd.dir/src.c.o -MF CMakeFiles/cmTC_5eabd.dir/src.c.o.d -o CMakeFiles/cmTC_5eabd.dir/src.c.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.c
+clang-17: error: argument unused during compilation: '-fuse-ld=lld' [-Werror,-Wunused-command-line-argument]
+gmake[1]: *** [CMakeFiles/cmTC_5eabd.dir/build.make:79: CMakeFiles/cmTC_5eabd.dir/src.c.o] Error 1
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_5eabd/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C++ SOURCE FILE Test CXX_SUPPORTS_MISLEADING_INDENTATION_FLAG failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_649c4/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_649c4.dir/build.make CMakeFiles/cmTC_649c4.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_649c4.dir/src.cxx.o
+/usr/bin/clang++-17 -DCXX_SUPPORTS_MISLEADING_INDENTATION_FLAG  -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wno-comment    -Werror -Wmisleading-indentation -std=gnu++17 -MD -MT CMakeFiles/cmTC_649c4.dir/src.cxx.o -MF CMakeFiles/cmTC_649c4.dir/src.cxx.o.d -o CMakeFiles/cmTC_649c4.dir/src.cxx.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.cxx
+clang++-17: error: argument unused during compilation: '-fuse-ld=lld' [-Werror,-Wunused-command-line-argument]
+gmake[1]: *** [CMakeFiles/cmTC_649c4.dir/build.make:79: CMakeFiles/cmTC_649c4.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_649c4/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C SOURCE FILE Test C_SUPPORTS_CTAD_MAYBE_UNSPPORTED_FLAG failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_92186/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_92186.dir/build.make CMakeFiles/cmTC_92186.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_92186.dir/src.c.o
+/usr/local/bin/clang-17 -DC_SUPPORTS_CTAD_MAYBE_UNSPPORTED_FLAG  -target aarch64-linux-gnu -fuse-ld=lld -g -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-comment    -Werror -Wctad-maybe-unsupported -MD -MT CMakeFiles/cmTC_92186.dir/src.c.o -MF CMakeFiles/cmTC_92186.dir/src.c.o.d -o CMakeFiles/cmTC_92186.dir/src.c.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.c
+clang-17: error: argument unused during compilation: '-fuse-ld=lld' [-Werror,-Wunused-command-line-argument]
+gmake[1]: *** [CMakeFiles/cmTC_92186.dir/build.make:79: CMakeFiles/cmTC_92186.dir/src.c.o] Error 1
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_92186/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C++ SOURCE FILE Test CXX_SUPPORTS_CTAD_MAYBE_UNSPPORTED_FLAG failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_9bde6/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_9bde6.dir/build.make CMakeFiles/cmTC_9bde6.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_9bde6.dir/src.cxx.o
+/usr/bin/clang++-17 -DCXX_SUPPORTS_CTAD_MAYBE_UNSPPORTED_FLAG  -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wno-comment    -Werror -Wctad-maybe-unsupported -std=gnu++17 -MD -MT CMakeFiles/cmTC_9bde6.dir/src.cxx.o -MF CMakeFiles/cmTC_9bde6.dir/src.cxx.o.d -o CMakeFiles/cmTC_9bde6.dir/src.cxx.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.cxx
+clang++-17: error: argument unused during compilation: '-fuse-ld=lld' [-Werror,-Wunused-command-line-argument]
+gmake[1]: *** [CMakeFiles/cmTC_9bde6.dir/build.make:79: CMakeFiles/cmTC_9bde6.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_9bde6/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C SOURCE FILE Test C_SUPPORTS_FNO_FUNCTION_SECTIONS failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_26309/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_26309.dir/build.make CMakeFiles/cmTC_26309.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_26309.dir/src.c.o
+/usr/local/bin/clang-17 -DC_SUPPORTS_FNO_FUNCTION_SECTIONS  -target aarch64-linux-gnu -fuse-ld=lld -g -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-comment    -Werror -fno-function-sections -MD -MT CMakeFiles/cmTC_26309.dir/src.c.o -MF CMakeFiles/cmTC_26309.dir/src.c.o.d -o CMakeFiles/cmTC_26309.dir/src.c.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.c
+clang-17: error: argument unused during compilation: '-fuse-ld=lld' [-Werror,-Wunused-command-line-argument]
+gmake[1]: *** [CMakeFiles/cmTC_26309.dir/build.make:79: CMakeFiles/cmTC_26309.dir/src.c.o] Error 1
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_26309/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test C_SUPPORTS_FDATA_SECTIONS failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_9a0ac/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_9a0ac.dir/build.make CMakeFiles/cmTC_9a0ac.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_9a0ac.dir/src.c.o
+/usr/local/bin/clang-17 -DC_SUPPORTS_FDATA_SECTIONS  -target aarch64-linux-gnu -fuse-ld=lld -g -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-comment    -Werror -fdata-sections -MD -MT CMakeFiles/cmTC_9a0ac.dir/src.c.o -MF CMakeFiles/cmTC_9a0ac.dir/src.c.o.d -o CMakeFiles/cmTC_9a0ac.dir/src.c.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.c
+clang-17: error: argument unused during compilation: '-fuse-ld=lld' [-Werror,-Wunused-command-line-argument]
+gmake[1]: *** [CMakeFiles/cmTC_9a0ac.dir/build.make:79: CMakeFiles/cmTC_9a0ac.dir/src.c.o] Error 1
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_9a0ac/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C++ SOURCE FILE Test CXX_SUPPORTS_FDATA_SECTIONS failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_32e84/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_32e84.dir/build.make CMakeFiles/cmTC_32e84.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_32e84.dir/src.cxx.o
+/usr/bin/clang++-17 -DCXX_SUPPORTS_FDATA_SECTIONS  -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wno-comment    -Werror -fdata-sections -std=gnu++17 -MD -MT CMakeFiles/cmTC_32e84.dir/src.cxx.o -MF CMakeFiles/cmTC_32e84.dir/src.cxx.o.d -o CMakeFiles/cmTC_32e84.dir/src.cxx.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/src.cxx
+clang++-17: error: argument unused during compilation: '-fuse-ld=lld' [-Werror,-Wunused-command-line-argument]
+gmake[1]: *** [CMakeFiles/cmTC_32e84.dir/build.make:79: CMakeFiles/cmTC_32e84.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_32e84/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Determining if the os_signpost_interval_begin exist failed with the following output:
+Change Dir: /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_d3fe8/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_d3fe8.dir/build.make CMakeFiles/cmTC_d3fe8.dir/build
+gmake[1]: Entering directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_d3fe8.dir/CheckSymbolExists.c.o
+/usr/local/bin/clang-17   -target aarch64-linux-gnu -fuse-ld=lld -g -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-comment  -MD -MT CMakeFiles/cmTC_d3fe8.dir/CheckSymbolExists.c.o -MF CMakeFiles/cmTC_d3fe8.dir/CheckSymbolExists.c.o.d -o CMakeFiles/cmTC_d3fe8.dir/CheckSymbolExists.c.o -c /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+clang-17: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/CheckSymbolExists.c:2:10: fatal error: 'os/signpost.h' file not found
+    2 | #include <os/signpost.h>
+      |          ^~~~~~~~~~~~~~~
+1 error generated.
+gmake[1]: *** [CMakeFiles/cmTC_d3fe8.dir/build.make:79: CMakeFiles/cmTC_d3fe8.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_d3fe8/fast] Error 2
+
+
+File /root/code/Kotoamatsukami/build-arm64/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <os/signpost.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef os_signpost_interval_begin
+  return ((int*)(&os_signpost_interval_begin))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}

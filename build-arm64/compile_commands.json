@@ -1,0 +1,87 @@
+[
+{
+  "directory": "/root/code/Kotoamatsukami/build-arm64",
+  "command": "/usr/bin/clang++-17 -DGTEST_HAS_RTTI=0 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -I/root/open_source/llvm-project/llvm/include -I/root/open_source/llvm-build/include -I/root/code/Kotoamatsukami/src/include -I/root/code/Kotoamatsukami/lib/json/include -I/root/code/Kotoamatsukami/lib/json/single_include/nlohmann -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wno-comment -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -fno-exceptions -funwind-tables -fno-rtti -std=gnu++17 -o CMakeFiles/Kotoamatsukami.dir/src/PassPlugin.cpp.o -c /root/code/Kotoamatsukami/src/PassPlugin.cpp",
+  "file": "/root/code/Kotoamatsukami/src/PassPlugin.cpp"
+},
+{
+  "directory": "/root/code/Kotoamatsukami/build-arm64",
+  "command": "/usr/bin/clang++-17 -DGTEST_HAS_RTTI=0 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -I/root/open_source/llvm-project/llvm/include -I/root/open_source/llvm-build/include -I/root/code/Kotoamatsukami/src/include -I/root/code/Kotoamatsukami/lib/json/include -I/root/code/Kotoamatsukami/lib/json/single_include/nlohmann -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wno-comment -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -fno-exceptions -funwind-tables -fno-rtti -std=gnu++17 -o CMakeFiles/Kotoamatsukami.dir/src/pass/AddJunkCodePass.cpp.o -c /root/code/Kotoamatsukami/src/pass/AddJunkCodePass.cpp",
+  "file": "/root/code/Kotoamatsukami/src/pass/AddJunkCodePass.cpp"
+},
+{
+  "directory": "/root/code/Kotoamatsukami/build-arm64",
+  "command": "/usr/bin/clang++-17 -DGTEST_HAS_RTTI=0 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -I/root/open_source/llvm-project/llvm/include -I/root/open_source/llvm-build/include -I/root/code/Kotoamatsukami/src/include -I/root/code/Kotoamatsukami/lib/json/include -I/root/code/Kotoamatsukami/lib/json/single_include/nlohmann -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wno-comment -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -fno-exceptions -funwind-tables -fno-rtti -std=gnu++17 -o CMakeFiles/Kotoamatsukami.dir/src/pass/Branch2Call.cpp.o -c /root/code/Kotoamatsukami/src/pass/Branch2Call.cpp",
+  "file": "/root/code/Kotoamatsukami/src/pass/Branch2Call.cpp"
+},
+{
+  "directory": "/root/code/Kotoamatsukami/build-arm64",
+  "command": "/usr/bin/clang++-17 -DGTEST_HAS_RTTI=0 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -I/root/open_source/llvm-project/llvm/include -I/root/open_source/llvm-build/include -I/root/code/Kotoamatsukami/src/include -I/root/code/Kotoamatsukami/lib/json/include -I/root/code/Kotoamatsukami/lib/json/single_include/nlohmann -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wno-comment -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -fno-exceptions -funwind-tables -fno-rtti -std=gnu++17 -o CMakeFiles/Kotoamatsukami.dir/src/pass/Branch2Call_32.cpp.o -c /root/code/Kotoamatsukami/src/pass/Branch2Call_32.cpp",
+  "file": "/root/code/Kotoamatsukami/src/pass/Branch2Call_32.cpp"
+},
+{
+  "directory": "/root/code/Kotoamatsukami/build-arm64",
+  "command": "/usr/bin/clang++-17 -DGTEST_HAS_RTTI=0 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -I/root/open_source/llvm-project/llvm/include -I/root/open_source/llvm-build/include -I/root/code/Kotoamatsukami/src/include -I/root/code/Kotoamatsukami/lib/json/include -I/root/code/Kotoamatsukami/lib/json/single_include/nlohmann -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wno-comment -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -fno-exceptions -funwind-tables -fno-rtti -std=gnu++17 -o CMakeFiles/Kotoamatsukami.dir/src/pass/ForObsPass.cpp.o -c /root/code/Kotoamatsukami/src/pass/ForObsPass.cpp",
+  "file": "/root/code/Kotoamatsukami/src/pass/ForObsPass.cpp"
+},
+{
+  "directory": "/root/code/Kotoamatsukami/build-arm64",
+  "command": "/usr/bin/clang++-17 -DGTEST_HAS_RTTI=0 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -I/root/open_source/llvm-project/llvm/include -I/root/open_source/llvm-build/include -I/root/code/Kotoamatsukami/src/include -I/root/code/Kotoamatsukami/lib/json/include -I/root/code/Kotoamatsukami/lib/json/single_include/nlohmann -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wno-comment -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -fno-exceptions -funwind-tables -fno-rtti -std=gnu++17 -o CMakeFiles/Kotoamatsukami.dir/src/pass/Loopen.cpp.o -c /root/code/Kotoamatsukami/src/pass/Loopen.cpp",
+  "file": "/root/code/Kotoamatsukami/src/pass/Loopen.cpp"
+},
+{
+  "directory": "/root/code/Kotoamatsukami/build-arm64",
+  "command": "/usr/bin/clang++-17 -DGTEST_HAS_RTTI=0 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -I/root/open_source/llvm-project/llvm/include -I/root/open_source/llvm-build/include -I/root/code/Kotoamatsukami/src/include -I/root/code/Kotoamatsukami/lib/json/include -I/root/code/Kotoamatsukami/lib/json/single_include/nlohmann -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wno-comment -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -fno-exceptions -funwind-tables -fno-rtti -std=gnu++17 -o CMakeFiles/Kotoamatsukami.dir/src/pass/AntiDebugPass.cpp.o -c /root/code/Kotoamatsukami/src/pass/AntiDebugPass.cpp",
+  "file": "/root/code/Kotoamatsukami/src/pass/AntiDebugPass.cpp"
+},
+{
+  "directory": "/root/code/Kotoamatsukami/build-arm64",
+  "command": "/usr/bin/clang++-17 -DGTEST_HAS_RTTI=0 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -I/root/open_source/llvm-project/llvm/include -I/root/open_source/llvm-build/include -I/root/code/Kotoamatsukami/src/include -I/root/code/Kotoamatsukami/lib/json/include -I/root/code/Kotoamatsukami/lib/json/single_include/nlohmann -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wno-comment -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -fno-exceptions -funwind-tables -fno-rtti -std=gnu++17 -o CMakeFiles/Kotoamatsukami.dir/src/pass/SplitBasicBlock.cpp.o -c /root/code/Kotoamatsukami/src/pass/SplitBasicBlock.cpp",
+  "file": "/root/code/Kotoamatsukami/src/pass/SplitBasicBlock.cpp"
+},
+{
+  "directory": "/root/code/Kotoamatsukami/build-arm64",
+  "command": "/usr/bin/clang++-17 -DGTEST_HAS_RTTI=0 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -I/root/open_source/llvm-project/llvm/include -I/root/open_source/llvm-build/include -I/root/code/Kotoamatsukami/src/include -I/root/code/Kotoamatsukami/lib/json/include -I/root/code/Kotoamatsukami/lib/json/single_include/nlohmann -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wno-comment -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -fno-exceptions -funwind-tables -fno-rtti -std=gnu++17 -o CMakeFiles/Kotoamatsukami.dir/src/pass/IndirectBranch.cpp.o -c /root/code/Kotoamatsukami/src/pass/IndirectBranch.cpp",
+  "file": "/root/code/Kotoamatsukami/src/pass/IndirectBranch.cpp"
+},
+{
+  "directory": "/root/code/Kotoamatsukami/build-arm64",
+  "command": "/usr/bin/clang++-17 -DGTEST_HAS_RTTI=0 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -I/root/open_source/llvm-project/llvm/include -I/root/open_source/llvm-build/include -I/root/code/Kotoamatsukami/src/include -I/root/code/Kotoamatsukami/lib/json/include -I/root/code/Kotoamatsukami/lib/json/single_include/nlohmann -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wno-comment -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -fno-exceptions -funwind-tables -fno-rtti -std=gnu++17 -o CMakeFiles/Kotoamatsukami.dir/src/pass/IndirectCall.cpp.o -c /root/code/Kotoamatsukami/src/pass/IndirectCall.cpp",
+  "file": "/root/code/Kotoamatsukami/src/pass/IndirectCall.cpp"
+},
+{
+  "directory": "/root/code/Kotoamatsukami/build-arm64",
+  "command": "/usr/bin/clang++-17 -DGTEST_HAS_RTTI=0 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -I/root/open_source/llvm-project/llvm/include -I/root/open_source/llvm-build/include -I/root/code/Kotoamatsukami/src/include -I/root/code/Kotoamatsukami/lib/json/include -I/root/code/Kotoamatsukami/lib/json/single_include/nlohmann -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wno-comment -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -fno-exceptions -funwind-tables -fno-rtti -std=gnu++17 -o CMakeFiles/Kotoamatsukami.dir/src/pass/BogusControlFlow.cpp.o -c /root/code/Kotoamatsukami/src/pass/BogusControlFlow.cpp",
+  "file": "/root/code/Kotoamatsukami/src/pass/BogusControlFlow.cpp"
+},
+{
+  "directory": "/root/code/Kotoamatsukami/build-arm64",
+  "command": "/usr/bin/clang++-17 -DGTEST_HAS_RTTI=0 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -I/root/open_source/llvm-project/llvm/include -I/root/open_source/llvm-build/include -I/root/code/Kotoamatsukami/src/include -I/root/code/Kotoamatsukami/lib/json/include -I/root/code/Kotoamatsukami/lib/json/single_include/nlohmann -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wno-comment -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -fno-exceptions -funwind-tables -fno-rtti -std=gnu++17 -o CMakeFiles/Kotoamatsukami.dir/src/pass/Substitution.cpp.o -c /root/code/Kotoamatsukami/src/pass/Substitution.cpp",
+  "file": "/root/code/Kotoamatsukami/src/pass/Substitution.cpp"
+},
+{
+  "directory": "/root/code/Kotoamatsukami/build-arm64",
+  "command": "/usr/bin/clang++-17 -DGTEST_HAS_RTTI=0 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -I/root/open_source/llvm-project/llvm/include -I/root/open_source/llvm-build/include -I/root/code/Kotoamatsukami/src/include -I/root/code/Kotoamatsukami/lib/json/include -I/root/code/Kotoamatsukami/lib/json/single_include/nlohmann -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wno-comment -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -fno-exceptions -funwind-tables -fno-rtti -std=gnu++17 -o CMakeFiles/Kotoamatsukami.dir/src/pass/Flatten.cpp.o -c /root/code/Kotoamatsukami/src/pass/Flatten.cpp",
+  "file": "/root/code/Kotoamatsukami/src/pass/Flatten.cpp"
+},
+{
+  "directory": "/root/code/Kotoamatsukami/build-arm64",
+  "command": "/usr/bin/clang++-17 -DGTEST_HAS_RTTI=0 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -I/root/open_source/llvm-project/llvm/include -I/root/open_source/llvm-build/include -I/root/code/Kotoamatsukami/src/include -I/root/code/Kotoamatsukami/lib/json/include -I/root/code/Kotoamatsukami/lib/json/single_include/nlohmann -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wno-comment -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -fno-exceptions -funwind-tables -fno-rtti -std=gnu++17 -o CMakeFiles/Kotoamatsukami.dir/src/pass/GVEncrypt.cpp.o -c /root/code/Kotoamatsukami/src/pass/GVEncrypt.cpp",
+  "file": "/root/code/Kotoamatsukami/src/pass/GVEncrypt.cpp"
+},
+{
+  "directory": "/root/code/Kotoamatsukami/build-arm64",
+  "command": "/usr/bin/clang++-17 -DGTEST_HAS_RTTI=0 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -I/root/open_source/llvm-project/llvm/include -I/root/open_source/llvm-build/include -I/root/code/Kotoamatsukami/src/include -I/root/code/Kotoamatsukami/lib/json/include -I/root/code/Kotoamatsukami/lib/json/single_include/nlohmann -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wno-comment -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -fno-exceptions -funwind-tables -fno-rtti -std=gnu++17 -o CMakeFiles/Kotoamatsukami.dir/src/utils/utils.cpp.o -c /root/code/Kotoamatsukami/src/utils/utils.cpp",
+  "file": "/root/code/Kotoamatsukami/src/utils/utils.cpp"
+},
+{
+  "directory": "/root/code/Kotoamatsukami/build-arm64",
+  "command": "/usr/bin/clang++-17 -DGTEST_HAS_RTTI=0 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -I/root/open_source/llvm-project/llvm/include -I/root/open_source/llvm-build/include -I/root/code/Kotoamatsukami/src/include -I/root/code/Kotoamatsukami/lib/json/include -I/root/code/Kotoamatsukami/lib/json/single_include/nlohmann -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wno-comment -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -fno-exceptions -funwind-tables -fno-rtti -std=gnu++17 -o CMakeFiles/Kotoamatsukami.dir/src/utils/config.cpp.o -c /root/code/Kotoamatsukami/src/utils/config.cpp",
+  "file": "/root/code/Kotoamatsukami/src/utils/config.cpp"
+},
+{
+  "directory": "/root/code/Kotoamatsukami/build-arm64",
+  "command": "/usr/bin/clang++-17 -DGTEST_HAS_RTTI=0 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -I/root/open_source/llvm-project/llvm/include -I/root/open_source/llvm-build/include -I/root/code/Kotoamatsukami/src/include -I/root/code/Kotoamatsukami/lib/json/include -I/root/code/Kotoamatsukami/lib/json/single_include/nlohmann -target aarch64-linux-gnu -fuse-ld=lld -g -fvisibility-inlines-hidden -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wno-comment -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -fno-exceptions -funwind-tables -fno-rtti -std=gnu++17 -o CMakeFiles/Kotoamatsukami.dir/src/utils/TaintAnalysis.cpp.o -c /root/code/Kotoamatsukami/src/utils/TaintAnalysis.cpp",
+  "file": "/root/code/Kotoamatsukami/src/utils/TaintAnalysis.cpp"
+}
+]
