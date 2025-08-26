@@ -1,0 +1,82 @@
+# 构建目录和生成文件
+build*/
+cmake-build-*/
+_deps/
+*.so
+*.o
+*.d
+*.gcno
+*.gcda
+*.dSYM
+*.a
+*.lib
+*.dll
+*.dylib
+
+# CMake 生成文件
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+CTestTestfile.cmake
+install_manifest.txt
+Makefile
+*.ninja
+build.ninja
+rules.ninja
+
+# IDE 相关
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# 编译器和构建工具相关
+.ccache/
+*.gch
+*.pch
+
+# 测试和临时文件
+test_*
+temp*
+tmp*
+*.tmp
+*.log
+*.out
+
+# 备份文件
+*.bak
+*.backup
+*.old
+
+# 系统生成文件
+Thumbs.db
+*.stackdump
+
+# Python 相关 (如果有 Python 脚本)
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+venv/
+env/
+
+# Clang 相关
+.cache/
+.clangd/
+
+# 特定项目文件
+*.config.bak
+lib*_normal_*.so
+lib*_obfuscated_*.so
+
+# 文档生成
+docs/build/
+docs/_build/
+
+# 忽略测试输出和demo文件
+demo_*
+test_output*
+*.output

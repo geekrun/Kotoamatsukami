@@ -1,0 +1,159 @@
+name: Quick Build & Test
+
+on:
+  push:
+    paths:
+      - 'src/**'
+      - 'CMakeLists.txt'
+      - '.github/workflows/**'
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'CMakeLists.txt'
+
+jobs:
+  quick-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15  # 限制最大运行时间
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        submodules: false  # 快速模式不拉取子模块
+        
+    - name: Cache LLVM installation
+      id: cache-llvm
+      uses: actions/cache@v3
+      with:
+        path: |
+          /usr/lib/llvm-17
+          /usr/bin/llvm*
+          /usr/bin/clang*
+        key: llvm-17-ubuntu-quick-v1
+        
+    - name: Install LLVM-17 (if not cached)
+      if: steps.cache-llvm.outputs.cache-hit != 'true'
+      run: |
+        wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+        sudo add-apt-repository "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-17 main"
+        sudo apt-get update
+        sudo apt-get install -y llvm-17 llvm-17-dev clang-17 cmake ninja-build
+
+    - name: Quick x86_64 build test
+      run: |
+        mkdir build-quick
+        cd build-quick
+        
+        cmake .. \
+          -G Ninja \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DLLVM_DIR=/usr/lib/llvm-17/lib/cmake/llvm
+          
+        # 只编译一个源文件来测试配置
+        ninja src/PassPlugin.cpp.o
+        
+        echo "✅ Quick build configuration test passed"
+
+  full-build:
+    needs: quick-test
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      matrix:
+        arch: [x86_64, arm64]
+      fail-fast: false  # 一个架构失败不影响另一个
+        
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+        
+    - name: Setup build cache
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.cache/ccache
+          build-${{ matrix.arch }}
+        key: build-cache-${{ matrix.arch }}-${{ hashFiles('src/**', 'CMakeLists.txt') }}
+        restore-keys: |
+          build-cache-${{ matrix.arch }}-
+          
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y ccache  # 编译缓存
+        
+        # LLVM
+        wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+        sudo add-apt-repository "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-17 main"
+        sudo apt-get update
+        sudo apt-get install -y llvm-17 llvm-17-dev clang-17 cmake ninja-build
+        
+        # ARM64交叉编译工具 (仅在需要时安装)
+        if [ "${{ matrix.arch }}" = "arm64" ]; then
+          sudo apt-get install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+        fi
+        
+    - name: Setup ccache
+      run: |
+        ccache --set-config=cache_dir=~/.cache/ccache
+        ccache --set-config=max_size=1G
+        ccache --set-config=compression=true
+        
+    - name: Build ${{ matrix.arch }}
+      run: |
+        export CC="ccache clang-17"
+        export CXX="ccache clang++-17"
+        
+        mkdir -p build-${{ matrix.arch }}
+        cd build-${{ matrix.arch }}
+        
+        if [ "${{ matrix.arch }}" = "x86_64" ]; then
+          cmake .. \
+            -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DLLVM_DIR=/usr/lib/llvm-17/lib/cmake/llvm
+        else
+          cmake .. \
+            -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_SYSTEM_NAME=Linux \
+            -DCMAKE_SYSTEM_PROCESSOR=aarch64 \
+            -DCMAKE_C_COMPILER=aarch64-linux-gnu-gcc \
+            -DCMAKE_CXX_COMPILER=aarch64-linux-gnu-g++ \
+            -DCMAKE_FIND_ROOT_PATH=/usr/aarch64-linux-gnu \
+            -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER \
+            -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY \
+            -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY \
+            -DLLVM_DIR=/usr/lib/llvm-17/lib/cmake/llvm
+        fi
+        
+        # 使用所有可用核心并行编译
+        ninja -j$(nproc)
+        
+    - name: Verify build
+      run: |
+        cd build-${{ matrix.arch }}
+        ls -lh Kotoamatsukami.so
+        file Kotoamatsukami.so
+        
+        # 检查是否是正确的架构
+        if [ "${{ matrix.arch }}" = "x86_64" ]; then
+          file Kotoamatsukami.so | grep -q "x86-64" || (echo "❌ Wrong architecture" && exit 1)
+        else
+          file Kotoamatsukami.so | grep -q "aarch64" || (echo "❌ Wrong architecture" && exit 1)
+        fi
+        
+        echo "✅ ${{ matrix.arch }} build completed successfully"
+        
+    - name: Show ccache stats
+      run: ccache --show-stats
+      
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: kotoamatsukami-${{ matrix.arch }}-${{ github.sha }}
+        path: build-${{ matrix.arch }}/Kotoamatsukami.so
+        retention-days: 7  # 短期保存以节省空间
