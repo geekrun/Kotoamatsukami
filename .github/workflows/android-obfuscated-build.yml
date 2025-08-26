@@ -140,11 +140,36 @@ jobs:
     
     - name: Install LLVM-17 for obfuscation
       run: |
-        # 安装系统LLVM用于混淆第一阶段
+        # 安装系统LLVM用于混淆阶段
         wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | sudo tee /etc/apt/trusted.gpg.d/llvm.asc > /dev/null
         echo "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-17 main" | sudo tee /etc/apt/sources.list.d/llvm-17.list
         sudo apt-get update
-        sudo apt-get install -y clang-17 llvm-17
+        sudo apt-get install -f -y
+        
+        # 安装完整的LLVM-17工具链，包括opt
+        sudo apt-get install -y \
+          llvm-17 \
+          llvm-17-dev \
+          llvm-17-runtime \
+          clang-17 || \
+        sudo apt-get install -y \
+          llvm-17 \
+          llvm-17-dev \
+          llvm-17-runtime \
+          clang-17 \
+          libllvm17t64
+        
+        # 验证opt工具安装
+        echo "🔍 Verifying LLVM-17 tools installation:"
+        which opt-17 && echo "✅ opt-17 found" || echo "❌ opt-17 not found"
+        which opt && echo "✅ opt found" || echo "❌ opt not found"  
+        ls -la /usr/bin/opt* 2>/dev/null || echo "No opt tools found in /usr/bin"
+        
+        # 创建符号链接作为备选方案
+        if [ ! -f "/usr/bin/opt-17" ] && [ -f "/usr/bin/opt" ]; then
+          sudo ln -sf /usr/bin/opt /usr/bin/opt-17
+          echo "✅ Created opt-17 symlink"
+        fi
     
     - name: Verify Plugin and Config
       run: |
@@ -252,12 +277,28 @@ jobs:
             message(FATAL_ERROR "❌ OLLVM config not found in any search path")
         endif()
         
-        # 验证主机opt工具
-        execute_process(COMMAND which "\${HOST_OPT}" OUTPUT_VARIABLE OPT_PATH OUTPUT_STRIP_TRAILING_WHITESPACE)
-        if(OPT_PATH STREQUAL "")
-            message(FATAL_ERROR "❌ Host opt tool not found: \${HOST_OPT}")
+        # 查找主机opt工具 - 尝试多个可能的名称
+        set(OPT_CANDIDATES "opt-17" "opt" "/usr/bin/opt-17" "/usr/bin/opt")
+        set(HOST_OPT_FOUND "")
+        
+        foreach(OPT_CANDIDATE \${OPT_CANDIDATES})
+            execute_process(COMMAND which "\${OPT_CANDIDATE}" OUTPUT_VARIABLE OPT_PATH OUTPUT_STRIP_TRAILING_WHITESPACE ERROR_QUIET)
+            if(NOT OPT_PATH STREQUAL "")
+                set(HOST_OPT_FOUND "\${OPT_CANDIDATE}")
+                message(STATUS "✅ Found host opt: \${OPT_PATH}")
+                break()
+            endif()
+        endforeach()
+        
+        if("\${HOST_OPT_FOUND}" STREQUAL "")
+            message(STATUS "❌ Host opt search failed! Tried:")
+            foreach(OPT_CANDIDATE \${OPT_CANDIDATES})
+                message(STATUS "   - \${OPT_CANDIDATE}")
+            endforeach()
+            message(FATAL_ERROR "❌ Host opt tool not found - please install llvm-17 or llvm")
         endif()
-        message(STATUS "✅ Using host opt: \${OPT_PATH}")
+        
+        set(HOST_OPT "\${HOST_OPT_FOUND}")
         
         # NDK工具链配置
         set(NDK_TARGET "aarch64-linux-android\${ANDROID_NATIVE_API_LEVEL}")
